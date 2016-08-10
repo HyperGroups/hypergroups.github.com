@@ -1,0 +1,262 @@
+---
+layout: post
+category: Help
+title: WelcomeBackToJekyll
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/WelcomeBackToJekyll/index.html#section1" title="Something">
+	Something</a></p>
+
+	<p class="sectionList Subsection"><a href="/WelcomeBackToJekyll/index.html#section2" title="重配Jekyll">
+	重配Jekyll</a></p>
+
+	<p class="sectionList Subsection"><a href="/WelcomeBackToJekyll/index.html#section3" title="End">
+	End</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ Welcome Back To Jekyll
+</p>
+
+
+
+<p class="Chapter">
+ @2015-8-8
+</p>
+
+
+
+<p class="Chapter">
+ tags:Jekyll
+</p>
+
+
+
+<p class="Section" id="section1">
+ Something
+</p>
+
+
+
+<p class="Text">
+ Jekyll是两年前接触的，了解到一些基础的用法，在一些时间内，我的几十篇日志都是用Mma转Jekyll的模板HTML文件然后建站的。
+</p>
+
+
+
+<p class="Text">
+ 后来因为尝试全部使用Mathematica生成所有静态页面，进展也算不错，唯一一点略不爽的就是因为侧边栏和最新日志的更新会导致全部网页在提交时重新提交一次，因此要转成JSON数据调用来生成，不知道何时能搞完。
+</p>
+
+
+
+<p class="Text">
+ 然后最后开始学一点Python，同样有静态博客框架Pelican，也要时间熟悉一些相关的配置，并且还要开发一个辅助程序包，同样暂时没有时间。
+</p>
+
+
+
+<p class="Text">
+ 然后有些东东，笔记啥的，还是要及时发布，因此决定把Jekyll的程序包重新Refresh一下，毕竟简单的Liquid模板语言的使用，一些配置等是熟悉的，花一个周末希望就能重新使用起来。
+</p>
+
+
+
+<p class="Subsection">
+ Planning
+</p>
+
+
+
+<p class="Text">
+ 挖坑总是容易的，填坑则有时要若干年的时间。如果有时间，我想完善一下Jekyll，Mathematica，Pelican版的三个程序包。
+</p>
+
+
+
+<p class="Text">
+ 在这个过程中，对于Mathematica的一些相关内容上还是有所提高的，如DownValues及括号复合变量名的使用，函数式的一些东东，头部作为参数的应用，反射优化代码，Association及Template相关的一些东东，及文件目录的综合处理等等。
+</p>
+
+
+
+<p class="Text">
+ GitHub的仓库和Pages模式下，仓库名MBlogJekyll表示Mathematica+Jekyll的建站生成网页方式，MBlogPelican表示Mathematica+Pelican的建站方式，MBlog/MBlogExtend等表示的是Mathematica的建站生成网页方式。
+</p>
+
+
+
+<p class="Section" id="section2">
+ 重配Jekyll
+</p>
+
+
+
+<p class="Text">
+ 当初次装好Ruby等环境后，重装系统后再装Jekyll还是非常方便的。
+</p>
+
+
+
+<p class="Text">
+ 我已经参考自己的这篇<span><a shape="rect" href="http://hypergroups.cn/Jekyll+Github-Note1/"><span class="HyperlinkInline">日志</span></a></span>两三次了。
+</p>
+
+
+
+<p class="Subsection">
+ 新建一个项目
+</p>
+
+
+
+<p class="Text">
+ 参考帮助文档的<span><a shape="rect" href="http://jekyll.bootcss.com/"><span class="HyperlinkInline">这里</span></a></span>，快速新建一个站点，然后把历史的文件Copy过去，再提交就是一个新的站点了。
+</p>
+
+
+
+<p class="Text">
+ ~ $ gem install jekyll <br clear="none"/><br clear="none"/>~ $ jekyll new my-awesome-site <br clear="none"/><br clear="none"/>~ $ cd my-awesome-site <br clear="none"/><br clear="none"/>~/my-awesome-site $ jekyll serve <br clear="none"/><br clear="none"/># => Now browse to http://localhost:4000
+</p>
+
+
+
+<p class="Text">
+ 之所以有这一步，是因为我的硬盘经过格式化，数据恢复等操作导致有些文件损坏，然后在Jekyll Serve的时候各种报错，因此还是重新来一次比较好。同时另一个原因是在线的老的站点没有Jekyll编译后的效果了，这也是此前不知道的什么原因导致，直接导致我不想用Jekyll的原因。
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/WelcomeBackToJekyll/HTMLFiles/WelcomeBackToJekyll_1.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/WelcomeBackToJekyll/HTMLFiles/WelcomeBackToJekyll_1.png" alt="WelcomeBackToJekyll_1.png" width="652" height="159" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Subsection">
+ 新建一个主题
+</p>
+
+
+
+<p class="Text">
+ 主题因为一些历史原因，我还是使用Twitter主题吧，对于其中的一些数值Span块等比较熟悉。
+</p>
+
+
+
+<p class="Text">
+ 安装新主题，<span><a shape="rect" href="http://jekyllbootstrap.com/"><span class="HyperlinkInline">Jekyll Bootstrap</span></a></span>
+</p>
+
+
+
+<p class="Text">
+ 因为浏览器里那个主题插件看不了，，，不知道是否因为网络的原因，所以直接copy了原来的主题文件
+</p>
+
+
+
+<p class="Subsection">
+ 基础设置
+</p>
+
+
+
+<p class="Subsubsection">
+ 问题：{{ASSET_PATH}}的失效问题。
+</p>
+
+
+
+<p class="Text">
+ 如果要把博客放在hypergroups.github.com的仓库[主仓库]中，则baseurl的设置是空。<br clear="none"/>我是新建立了一个MBlogJekyll来测试这个博客，然后准备成熟后再放到主仓库。
+</p>
+
+
+
+<p class="Text">
+ 解决方式：把{{site.baseurl}}添加到{{ASSET_PATH}}前面，同时，Pages的链接在导航栏中也有失效的情形，<br clear="none"/>在&ldquo;_includes\\JB\\pages_list&rdquo; 里的{{BASE_PATH}}前面也加一个。<br clear="none"/>这样，复制MBlogJekyll的配置及内容到主仓库时，只要修改一下配置文件里的baseurl就可以了。
+</p>
+
+
+
+<p class="Subsubsection">
+ mathJax报错
+</p>
+
+
+
+<p class="Text">
+ 重新配置下@<span><a shape="rect" href="http://mathjax-chinese-doc.readthedocs.org/en/latest/configuration.html"><span class="HyperlinkInline">ref</span></a></span>
+</p>
+
+
+
+<p class="Section" id="section3">
+ End
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="WelcomeBackToJekyll" data-title="WelcomeBackToJekyll" data-url="hypergroups.cn/WelcomeBackToJekyll/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

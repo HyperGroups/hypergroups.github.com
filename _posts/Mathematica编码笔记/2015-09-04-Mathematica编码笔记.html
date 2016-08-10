@@ -1,0 +1,635 @@
+---
+layout: post
+category: Mathematica
+title: Mathematica编码笔记
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/Mathematica编码笔记/index.html#section1" title="1">
+	1</a></p>
+
+	<p class="sectionList Subsection"><a href="/Mathematica编码笔记/index.html#section2" title="ExportString编码设置无效的问题">
+	ExportString编码设置无效的问题</a></p>
+
+	<p class="sectionList Subsection"><a href="/Mathematica编码笔记/index.html#section3" title="FileTemplateApply文件编码的问题">
+	FileTemplateApply文件编码的问题</a></p>
+
+	<p class="sectionList Subsection"><a href="/Mathematica编码笔记/index.html#section4" title="FilePrint的问题">
+	FilePrint的问题</a></p>
+
+	<p class="sectionList Subsection"><a href="/Mathematica编码笔记/index.html#section5" title="C编译器调用Debug信息的乱码">
+	C编译器调用Debug信息的乱码</a></p>
+
+	<p class="sectionList Subsection"><a href="/Mathematica编码笔记/index.html#section6" title="Read/ReadList">
+	Read/ReadList</a></p>
+
+	<p class="sectionList Subsection"><a href="/Mathematica编码笔记/index.html#section7" title="JLink-JavaConsle">
+	JLink-JavaConsle</a></p>
+
+	<p class="sectionList Subsection"><a href="/Mathematica编码笔记/index.html#section8" title="其他">
+	其他</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ Mathematica编码笔记
+</p>
+
+
+
+<p class="Chapter">
+ @2015-9-4
+</p>
+
+
+
+<p class="Section" id="section1">
+ 1
+</p>
+
+
+
+<p class="Text">
+ CP936,Unicode, UTF-8, WindowsANSI是几个我最常接触到的编码，特别是文本文件。 
+</p>
+
+
+
+<p class="Section" id="section2">
+ ExportString编码设置无效的问题
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="http://mathematica.stackexchange.com/questions/83005/how-to-prevent-exportstring-from-reencoding-diacritics-when-exporting-as-json"><span class="HyperlinkInline">ref</span></a></span>
+</p>
+
+
+
+<p class="Text">
+ 通常我们在ImportExport的时候，会有一些编码设置，比如CharacterEncoding
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[1]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>$SystemCharacterEncoding</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_1.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_1.png" alt="Mathematica编码笔记_1.png" width="193" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_2.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_2.png" alt="Mathematica编码笔记_2.png" width="40" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 比如此时，Windows 10@x64@Mma10.2英文版
+</p>
+
+
+
+<p class="Subsection">
+ Windows
+</p>
+
+
+
+<p class="Subsubsection">
+ 输入文档编码：UTF8
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[2]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>ExportString["中文", "JSON"]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_3.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_3.png" alt="Mathematica编码笔记_3.png" width="224" height="18" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_4.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_4.png" alt="Mathematica编码笔记_4.png" width="48" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[3]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>pos = Position[
+   FromCharacterCode[
+      ToCharacterCode["中文", "UTF8"], #] & /@ $CharacterEncodings, 
+   "&auml;&cedil;­&aelig;"] // Quiet</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_5.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_5.png" alt="Mathematica编码笔记_5.png" width="697" height="61" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_6.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_6.png" alt="Mathematica编码笔记_6.png" width="453" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[4]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Extract[$CharacterEncodings, pos]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_7.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_7.png" alt="Mathematica编码笔记_7.png" width="262" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_8.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_8.png" alt="Mathematica编码笔记_8.png" width="530" height="37" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ ExportString生成的跟以UTF8编码再以Unicode解码是一样的
+</p>
+
+
+
+<p class="Text">
+ 而逆向解码则可以先以CP936编码再以UTF8编码解析
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[5]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>FromCharacterCode[ToCharacterCode["\"&auml;&cedil;­&aelig;\"", "CP936"], "UTF8"]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_9.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_9.png" alt="Mathematica编码笔记_9.png" width="498" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_10.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_10.png" alt="Mathematica编码笔记_10.png" width="48" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[6]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>decode[str_, encode_, decode_] := 
+ FromCharacterCode[ToCharacterCode[str, encode], decode]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_11.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_11.png" alt="Mathematica编码笔记_11.png" width="695" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[7]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>decode[ExportString["中文", "JSON"], "CP936", "UTF8"]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_12.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_12.png" alt="Mathematica编码笔记_12.png" width="418" height="18" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_13.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_13.png" alt="Mathematica编码笔记_13.png" width="48" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 许多时候遇到乱码问题，一般找到合适的两个encode和decode都能有一个好的效果，有时是要看起来是中文，有时是虽然看起来不是好的中文，但是输出到文件或其他地方时可以是好的中文。
+</p>
+
+
+
+<p class="Text">
+ 当然，这里JSON的问题可能是Intended的，因为帮助里有这么一句话，以UTF8编码的，而看到Szabolcs的<span><a shape="rect" href="http://mathematica.stackexchange.com/a/94018/6648"><span class="HyperlinkInline">answer</span></a></span>后我又试了下
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[8]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>subCodes = {"UTF8", "Unicode", "CP936"};</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_14.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_14.png" alt="Mathematica编码笔记_14.png" width="306" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[9]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>res1 = ExportString["中文", "String", CharacterEncoding -> #] & /@ 
+  subCodes</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_15.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_15.png" alt="Mathematica编码笔记_15.png" width="564" height="18" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_16.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_16.png" alt="Mathematica编码笔记_16.png" width="124" height="18" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[10]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>res2 = ExportString["中文", "Text", CharacterEncoding -> #] & /@ 
+  subCodes</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_17.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_17.png" alt="Mathematica编码笔记_17.png" width="547" height="18" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_18.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_18.png" alt="Mathematica编码笔记_18.png" width="132" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[11]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>ImportString[res1 // StringJoin, "Text", 
+   CharacterEncoding -> #] & /@ subCodes</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_19.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_19.png" alt="Mathematica编码笔记_19.png" width="585" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_20.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_20.png" alt="Mathematica编码笔记_20.png" width="295" height="18" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[12]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>ImportString[res1 // StringJoin, "String"(*,
+   CharacterEncoding\[Rule]#*)] & /@ subCodes</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_21.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_21.png" alt="Mathematica编码笔记_21.png" width="619" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_22.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_22.png" alt="Mathematica编码笔记_22.png" width="264" height="18" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 当然具体使用看场景了，是要看到是[中文]的字符串，还是看到不是[中文]显示的字符串.
+</p>
+
+
+
+<p class="Text">
+ 总之，从我的使用经验来说，接受了CharacterEncoding的选项又无效，是一件不舒服的事情，实际使用中，能够接受选项并改变会好些。
+</p>
+
+
+
+<p class="Subsection">
+ RawJSON
+</p>
+
+
+
+<p class="Text">
+ 看到RawJSON在ExportString中文时的表现跟JSON是有区别的，
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[13]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>ExportString["中文", "RawJSON"]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_23.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_23.png" alt="Mathematica编码笔记_23.png" width="248" height="18" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_24.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_24.png" alt="Mathematica编码笔记_24.png" width="48" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 当是这是一个普遍现象
+</p>
+
+
+
+<p class="Subsection">
+ HTMLFragment
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[14]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>ExportString["中文", "HTMLFragment"]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_25.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_25.png" alt="Mathematica编码笔记_25.png" width="288" height="18" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_26.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_26.png" alt="Mathematica编码笔记_26.png" width="32" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[15]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>ExportString["中文", "HTMLFragment", CharacterEncoding -> "UTF8"]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_27.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_27.png" alt="Mathematica编码笔记_27.png" width="503" height="18" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_28.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_28.png" alt="Mathematica编码笔记_28.png" width="32" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Section" id="section3">
+ FileTemplateApply文件编码的问题
+</p>
+
+
+
+<p class="Text">
+ FileTemplateApply会把一个UTF8编码的文件改成ANSI格式的文件，并且不接受Encoding的选项，这点是非常不方便的，因为许多时候我们要文件的格式是可以指定的，比如Jekyll静态博客的文档都会要求是无BOM-UTF8，如果再输入输出一次，又体现不出FileTemplateApply的方便了。
+</p>
+
+
+
+<p class="Text">
+ 另一个方式是，Import后使用TemplateApply再Export，即自定义一个fileTemplateApply
+</p>
+
+
+
+<p class="Text">
+ FileTemplateApply默认会把中文变成ASCII再输出，类似下面的ToString的效果
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[16]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>ToString["中文", CharacterEncoding -> "ASCII"]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_29.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_29.png" alt="Mathematica编码笔记_29.png" width="355" height="18" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_30.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_30.png" alt="Mathematica编码笔记_30.png" width="96" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Section" id="section4">
+ FilePrint的问题
+</p>
+
+
+
+<p class="Text">
+ FilePrint是预览文件的一个很好的函数，很早就引入了，但是有中文就只能呵呵了，Wolfram在中文处理的一些细节上一直没有怎么改进。<br clear="none"/>下面的状况一个是文件是UTF-8格式的，一个是ANSI格式存的，用记事本打开右键另存时可以选，内容都是无BOM-UTF8编码
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[17]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>FilePrint["t1.txt"]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_31.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_31.png" alt="Mathematica编码笔记_31.png" width="152" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Print">
+ &auml;&raquo;&euro;&auml;&sup1;&circ;
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[18]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>FilePrint["t2.txt"]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_32.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_32.png" alt="Mathematica编码笔记_32.png" width="152" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Print">
+ &Ecirc;&sup2;&Atilde;&acute;
+</p>
+
+
+
+<p class="Section" id="section5">
+ C编译器调用Debug信息的乱码
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_33.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_33.png" alt="Mathematica编码笔记_33.png" width="652" height="126" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ 可能的一个方案是使用一个样式表，其中Output的单元进行自动单元计算，经过字符串处理，使得中文的部分使用使得
+</p>
+
+
+
+<p class="Section" id="section6">
+ Read/ReadList
+</p>
+
+
+
+<p class="Text">
+ Read中文的时候也会有一个乱码的问题，然后加个encode的后果是在大文件时Read/ReadList本来很快，结果加了编解码操作占用大量时间和内存。
+</p>
+
+
+
+<p class="Section" id="section7">
+ JLink-JavaConsle
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="http://mathematica.stackexchange.com/questions/65565/jlink-java-console-cannt-show-chinese-characters"><span class="HyperlinkInline">ref</span></a></span>
+</p>
+
+
+
+<p class="Section" id="section8">
+ 其他
+</p>
+
+
+
+<p class="Text">
+ 10.01有一个不识别中文路径的Bug，后来已修复。
+</p>
+
+
+
+<p class="Text">
+ PDF另存为有一个乱码的情形，后来已修复。
+</p>
+
+
+
+<p class="Text">
+ 其他软件里应用时也会遇到类似的问题，所以习惯就凑合就好，如果工具用多了，有的时候在命令行里，ls一个路径什么的也有中文显示不正常的情况。
+</p>
+
+
+
+<p class="Text">
+ 下面是用PythonSDK调用七牛云图床API时遇到的编码小问题，Python不识别中文路径
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_34.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica编码笔记/HTMLFiles/Mathematica编码笔记_34.png" alt="Mathematica编码笔记_34.png" width="652" height="181" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Mathematica编码笔记" data-title="Mathematica编码笔记" data-url="hypergroups.cn/Mathematica编码笔记/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

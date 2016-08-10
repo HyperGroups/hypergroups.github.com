@@ -1,0 +1,8 @@
+	<link rel="stylesheet" media="screen" type="text/css" href="/stylesheets/zoomimage/css/layout.css" />
+    <link rel="stylesheet" media="screen" type="text/css" href="/stylesheets/zoomimage/css/zoomimage.css" />
+    <link rel="stylesheet" media="screen" type="text/css" href="/stylesheets/zoomimage/css/custom.css" />
+    <script type="text/javascript" src="/stylesheets/zoomimage/js/jquery.js"></script>
+    <script type="text/javascript" src="/stylesheets/zoomimage/js/eye.js"></script>
+    <script type="text/javascript" src="/stylesheets/zoomimage/js/utils.js"></script>
+    <script type="text/javascript" src="/stylesheets/zoomimage/js/zoomimage.js"></script>
+    <script type="text/javascript" src="/stylesheets/zoomimage/js/layout.js"></script>	

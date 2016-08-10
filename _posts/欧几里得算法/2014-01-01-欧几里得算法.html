@@ -1,0 +1,389 @@
+---
+layout: post
+category: Algorithm
+title: 欧几里得算法
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/欧几里得算法/index.html#section1" title="Keypoint">
+	Keypoint</a></p>
+
+	<p class="sectionList Subsection"><a href="/欧几里得算法/index.html#section2" title="实例">
+	实例</a></p>
+
+	<p class="sectionList Subsection"><a href="/欧几里得算法/index.html#section3" title="Programming">
+	Programming</a></p>
+
+	<p class="sectionList Subsection"><a href="/欧几里得算法/index.html#section4" title="两个多项式的结式">
+	两个多项式的结式</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ 欧几里得算法Euclid Algorithm
+</p>
+
+
+
+<p class="Subtitle">
+ @2014-01-01
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="http://baike.baidu.com/link?url=cFSBBLxTtxdssKhsJb0YkXq-OKO4LCAroHh7grHVu9xKJXoE_Ft9SOMQvGvmjLyl"><span class="HyperlinkInline">辗转相除法</span></a></span>
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="http://en.wikipedia.org/wiki/Euclidean_algorithm"><span class="HyperlinkInline">Euclid</span></a></span>
+</p>
+
+
+
+<p class="Text">
+ function gcd(a, b)<br clear="none"/>&nbsp;&nbsp;&nbsp;&nbsp;while b &ne; 0<br clear="none"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t := b<br clear="none"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b := a mod b<br clear="none"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a := t<br clear="none"/>&nbsp;&nbsp;&nbsp;&nbsp;return a
+</p>
+
+
+
+<p class="Section" id="section1">
+ Keypoint
+</p>
+
+
+
+<p class="Text">
+ 带余除法，我们设<span class="TitleInline">b</span>是大数，<span class="TitleInline">a</span>是小数。<span class="TitleInline">q</span>是quotient，<span class="TitleInline">r</span>是remainder
+</p>
+
+
+
+<p class="DisplayFormula">$$\color{red}{b}=q\times a+r$$</p><p class="Text">
+ 关键之处在于 <span>$(b,a)=(a,r)\cdots (d,0)$</span>
+</p>
+
+
+
+<p class="Text">
+ 也就是怎么个辗转法，所谓辗转，就是交换+反复
+</p>
+
+
+
+<p class="Section" id="section2">
+ 实例
+</p>
+
+
+
+<p class="Text">
+ 最大公因子Greatest Common Divisor
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[1]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>GCD[30, 18]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_1.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_1.png" alt="欧几里得算法_1.png" width="85" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_2.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_2.png" alt="欧几里得算法_2.png" width="6" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[2]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>30 = 1*18 + 12</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_3.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_3.png" alt="欧几里得算法_3.png" width="98" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[3]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>18 = 1*12 + 6</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_4.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_4.png" alt="欧几里得算法_4.png" width="90" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[4]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>12 = 2*6 + 0</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_5.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_5.png" alt="欧几里得算法_5.png" width="82" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[5]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>(30, 18) = (18, 12) = (12, 6) = (6, 0)</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_6.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_6.png" alt="欧几里得算法_6.png" width="268" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[6]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>CenterDot @@ Power @@@ FactorInteger[30]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_7.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_7.png" alt="欧几里得算法_7.png" width="300" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_8.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_8.png" alt="欧几里得算法_8.png" width="32" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[7]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>CenterDot @@ Power @@@ FactorInteger[18]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_9.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_9.png" alt="欧几里得算法_9.png" width="300" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_10.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_10.png" alt="欧几里得算法_10.png" width="19" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Section" id="section3">
+ Programming
+</p>
+
+
+
+<p class="Text">
+ step1 排序，大数在前，小数在后
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[8]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Sort[{3, 5}, Greater]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_11.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_11.png" alt="欧几里得算法_11.png" width="162" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_12.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_12.png" alt="欧几里得算法_12.png" width="27" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ step2 带余除法中的余数<span class="TitleInline">r</span>
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[9]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>QuotientRemainder[30, 18]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_13.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_13.png" alt="欧几里得算法_13.png" width="197" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[10]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Mod[30, 18]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_14.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_14.png" alt="欧几里得算法_14.png" width="87" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_15.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_15.png" alt="欧几里得算法_15.png" width="12" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[11]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>gcd[a_, b_] := 
+ Module[{list = {a, b}}, If[a < b, list = Reverse[list]]; 
+  While[list[[2]] != 0, list = {list[[2]], Mod @@ list}; Print[list]]]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_16.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_16.png" alt="欧几里得算法_16.png" width="531" height="57" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[12]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>gcd[30, 18]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_17.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_17.png" alt="欧几里得算法_17.png" width="86" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Print">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_18.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_18.png" alt="欧几里得算法_18.png" width="39" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Print">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_19.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_19.png" alt="欧几里得算法_19.png" width="33" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Print">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_20.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_20.png" alt="欧几里得算法_20.png" width="27" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Section" id="section4">
+ 两个多项式的结式
+</p>
+
+
+
+<p class="Text">
+ &nbsp;&nbsp;&nbsp;&nbsp;形如<span>$P(w,z)=0$</span>的方程对于每一个<em>z</em>有有穷多个解<span>$w_1(z),\cdots ,w_m(z)$</span>，其中<em>P</em>为一个二变量的多项式. 我们证明，这些根可以解释为一个全局解析函数<span>$f(z)$</span>的各个值，因此称<span>$f(z)$</span>为代数函数. 反之，如果给定了一个全局解析函数，则要明确它是否满足一个多项式方程.
+</p>
+
+
+
+<p class="Subsection">
+ 定理 设<span>$P(w,z)$</span>及<span>$Q(w,z)$</span>是两个互质的多项式，则只有有穷多个<span>$z_0$</span>的值可使方程<span>$P\left(w,z_0\right)=0$</span>及<span>$Q\left(w,z_0\right)=0$</span>具有一个公共根.
+</p>
+
+
+
+<p class="Subsubsection">
+ 设<em>P</em>及<em>Q</em>均按<em>w</em>的降幂排列，并令<span>$Q(w,z)=b_0(z)w+\cdots +b_m(z)$</span>，其中<span>$b_0(z)$</span>不恒等于零. 如果以<em>Q</em>除<em>P</em>，则得一个商及一个余数，它们都是<em>w</em>的多项式，并且是<em>z</em>的有理函数. 我们建立欧几里得辗转相除法如下：
+</p>
+
+
+
+<p class="DisplayFormula">$<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_21.gif" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/欧几里得算法/HTMLFiles/欧几里得算法_21.gif" alt="欧几里得算法_21.gif" width="169" height="106" style="vertical-align:middle"/></a>$</p><p class="Subsubsection">
+ 其中<span>$q_k$</span>及<span>$R_k$</span>都是<em>w</em>，<em>z</em>的多项式，而<span>$c_k$</span>是<em>z</em>的多项式，用以消除分式. <span>$R_k$</span>的<em>w</em>的次数是递降的，而<em>R</em>则只是<em>z</em>的多项式. 如果<em>R</em>恒等于零，是根据惟一因子分解定理，从上式中的最后一式可知，<span>$R_{n-2}$</span>将能被<span>$R_{n-1}$</span>的任意不可约因子所除尽，其中<span>$R_{n-1}$</span>是<em>w</em>的正幂多项式. 根据同样推理，逐步推论下去，可知所有的<span>$R_k$</span>以及<em>P</em>与<em>Q</em>都将被同一因子除尽. 这与假设相矛盾，因为<span>$R_{n-1}$</span>是<em>w</em>的正幂多项式，因此必具有一个包含<em>w</em>的不可约因子.
+</p>
+
+
+
+<p class="Subsubsection">
+ 现在设<span>$P\left(w_0,z_0\right)=0$</span>及<span>$Q\left(w_0,z_0\right)=0$</span>. 将这些值代入上式，得到<span>$R_1\left(w_0,z_0\right)=0,\ldots ,R_{n-1}\left(w_0,z_0\right)=0$</span>，最后有<span>$R_n\left(z_0\right)=0$</span>. 但因为<span>$R_n$</span>不恒等于零，故所有只有有穷个<span>$z_0$</span>可满足这一条件，从而定理得证.
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="欧几里得算法" data-title="欧几里得算法" data-url="hypergroups.cn/欧几里得算法/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,190 @@
+---
+layout: post
+category: Mathematica
+title: JSON无能的例子
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/JSON无能的例子/index.html#section1" title="">
+	</a></p>
+
+	<p class="sectionList Subsection"><a href="/JSON无能的例子/index.html#section2" title="">
+	</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ JSON无能的一些情况
+</p>
+
+
+
+<p class="Chapter">
+ @2015-10-20
+</p>
+
+
+
+<p class="Section" id="section1">
+ 
+</p>
+
+
+
+<p class="Text">
+ 外部获得的一些结构化数据，导入时，若有些小问题，要加些预处理
+</p>
+
+
+
+<p class="Section" id="section2">
+ 
+</p>
+
+
+
+<p class="Text">
+ python中字典套字典的数据
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[1]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>str = "{'1':{'a':1,'b':1},'2':{'a':1,'b':1}}";</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/JSON无能的例子/HTMLFiles/JSON无能的例子_1.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/JSON无能的例子/HTMLFiles/JSON无能的例子_1.png" alt="JSON无能的例子_1.png" width="362" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[2]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>ImportString[str, "JSON"]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/JSON无能的例子/HTMLFiles/JSON无能的例子_2.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/JSON无能的例子/HTMLFiles/JSON无能的例子_2.png" alt="JSON无能的例子_2.png" width="198" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Message">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/JSON无能的例子/HTMLFiles/JSON无能的例子_3.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/JSON无能的例子/HTMLFiles/JSON无能的例子_3.png" alt="JSON无能的例子_3.png" width="243" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/JSON无能的例子/HTMLFiles/JSON无能的例子_4.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/JSON无能的例子/HTMLFiles/JSON无能的例子_4.png" alt="JSON无能的例子_4.png" width="56" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 在这个问题中，是因为从控制台复制过来的字符串的单引号的问题，有的时候，像这种小细节要尝试一些时间后才发现。<br clear="none"/>含有u&rsquo;的unicode字符串则要把这个也替换掉再导入。
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[3]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>ImportString[StringReplace[str, "'" -> "\""], "JSON"]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/JSON无能的例子/HTMLFiles/JSON无能的例子_5.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/JSON无能的例子/HTMLFiles/JSON无能的例子_5.png" alt="JSON无能的例子_5.png" width="404" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/JSON无能的例子/HTMLFiles/JSON无能的例子_6.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/JSON无能的例子/HTMLFiles/JSON无能的例子_6.png" alt="JSON无能的例子_6.png" width="269" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Section" id="section3">
+ 
+</p>
+
+
+
+<p class="Section" id="section4">
+ 
+</p>
+
+
+
+<p class="Text">
+ 还有好些，待添加
+</p>
+
+
+
+<p class="Section" id="section5">
+ 
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="JSON无能的例子" data-title="JSON无能的例子" data-url="hypergroups.cn/JSON无能的例子/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

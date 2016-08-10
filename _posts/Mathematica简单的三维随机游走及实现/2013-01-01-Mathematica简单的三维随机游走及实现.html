@@ -1,0 +1,156 @@
+---
+layout: post
+category: Mathematica
+title: Mathematica简单的三维随机游走及实现
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/Mathematica简单的三维随机游走及实现/index.html#section1" title="三维随机游走">
+	三维随机游走</a></p>
+
+	<p class="sectionList Subsection"><a href="/Mathematica简单的三维随机游走及实现/index.html#section2" title="参考">
+	参考</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ Mathematica简单的三维随机游走及实现
+</p>
+
+
+
+<p class="Subtitle">
+ @2013-01-01
+</p>
+
+
+
+<p class="Section" id="section1">
+ 三维随机游走
+</p>
+
+
+
+<p class="Text">
+ 以下几个比较简单版本
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[1]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Graphics3D[
+ FoldList[Normal@
+    GeometricTransformation[#, TranslationTransform[#2]] &, Cuboid[], 
+  RandomChoice[Permutations[{1, 0, 0}], 50]], Boxed -> False]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica简单的三维随机游走及实现/HTMLFiles/Mathematica简单的三维随机游走及实现_1.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica简单的三维随机游走及实现/HTMLFiles/Mathematica简单的三维随机游走及实现_1.png" alt="Mathematica简单的三维随机游走及实现_1.png" width="656" height="37" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica简单的三维随机游走及实现/HTMLFiles/Mathematica简单的三维随机游走及实现_2.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica简单的三维随机游走及实现/HTMLFiles/Mathematica简单的三维随机游走及实现_2.png" alt="Mathematica简单的三维随机游走及实现_2.png" width="360" height="350" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[2]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>lattice = 
+  Table[Take[Join[{0, 0}, IntegerDigits[i, 2]], -3], {i, 1, 
+     8}] /. {0 -> -1};
+data = Accumulate[Table[lattice[[RandomInteger[{1, 8}]]], {200}]];
+Graphics3D[Tube[data]]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica简单的三维随机游走及实现/HTMLFiles/Mathematica简单的三维随机游走及实现_3.gif" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica简单的三维随机游走及实现/HTMLFiles/Mathematica简单的三维随机游走及实现_3.gif" alt="Mathematica简单的三维随机游走及实现_3.gif" width="689" height="57" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica简单的三维随机游走及实现/HTMLFiles/Mathematica简单的三维随机游走及实现_4.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica简单的三维随机游走及实现/HTMLFiles/Mathematica简单的三维随机游走及实现_4.png" alt="Mathematica简单的三维随机游走及实现_4.png" width="360" height="400" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 动画实现的话我就不在Mma里搞了暂时，参考我之前的一个<span><a shape="rect" href="http://v.youku.com/v_show/id_XNTQ4NzcxMDU2.html"><span class="HyperlinkInline">视频效果</span></a></span>吧。就是一个群组延时显示的动画，非常简单。 
+</p>
+
+
+
+<p class="Section" id="section2">
+ 参考
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="http://demonstrations.wolfram.com/search.html?query=3d%20walk"><span class="HyperlinkInline">demo</span></a></span>
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Mathematica简单的三维随机游走及实现" data-title="Mathematica简单的三维随机游走及实现" data-url="hypergroups.cn/Mathematica简单的三维随机游走及实现/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,274 @@
+---
+layout: post
+category: Mathematica
+title: Publish to GitHub with Mathematica on Windows
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/Publish to GitHub with Mathematica on Windows/index.html#section1" title="Method">
+	Method</a></p>
+
+	<p class="sectionList Subsection"><a href="/Publish to GitHub with Mathematica on Windows/index.html#section2" title="References">
+	References</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ Publish to GitHub with Mathematica on Windows
+</p>
+
+
+
+<p class="Subtitle">
+ @2013-06-14
+</p>
+
+
+
+<p class="Text">
+ I&rsquo;m on windows 8.1
+</p>
+
+
+
+<p class="Text">
+ Let&rsquo;s just concentrate on how to commit the files. [git push]
+</p>
+
+
+
+<p class="Section" id="section1">
+ Method
+</p>
+
+
+
+<p class="Subsection">
+ 1 Auto type username and password
+</p>
+
+
+
+<p class="Text">
+ download an <span><a shape="rect" href="https://confluence.atlassian.com/display/STASH/Permanently+authenticating+with+Git+repositories"><span class="HyperlinkInline">assistant tool小助手</span></a></span>[Permanently authenticating with Git repositories]
+</p>
+
+
+
+<p class="Text">
+ my git-credential-winstore.exe is put and installed here 
+</p>
+
+
+
+<p class="Text">
+ E:\\Users\\Hyper\\AppData\\Local\\GitHub\\PortableGit_fed20eba68b3e238e49a47cdfed0a45783d93651\\bin
+</p>
+
+
+
+<p class="Subsection">
+ 2 Put commands in the .bat file
+</p>
+
+
+
+<p class="Text">
+ Put the commands set used in GitShell in the .bat file of the portable version of GitHub.
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[1]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>batFile = 
+  "E:\\Users\\Hyper\\AppData\\Local\\GitHub\\PortableGit_\
+fed20eba68b3e238e49a47cdfed0a45783d93651\\git-cmd.bat";</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Publish to GitHub with Mathematica on Windows/HTMLFiles/Publish to GitHub with Mathematica on Windows_1.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Publish to GitHub with Mathematica on Windows/HTMLFiles/Publish to GitHub with Mathematica on Windows_1.png" alt="Publish to GitHub with Mathematica on Windows_1.png" width="572" height="37" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[2]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>batSample = 
+  "@rem Do not use \"echo off\" to not affect any child calls.
+  @setlocal
+  
+  @rem Get the abolute path to the current directory, which is \
+assumed to be the
+  @rem Git installation root.
+  @for /F \"delims=\" %%I in (\"%~dp0\") do @set git_install_root=%%~fI
+  @set PATH=%git_install_root%\\bin;%git_install_root%\\mingw\\bin;%\
+git_install_root%\\cmd;%PATH%
+  
+  @if not exist \"%HOME%\" @set HOME=%HOMEDRIVE%%HOMEPATH%
+  @if not exist \"%HOME%\" @set HOME=%USERPROFILE%
+  
+  @set PLINK_PROTOCOL=ssh
+  @if not defined TERM set TERM=msys
+  
+  @cd %HOME%
+  ::@start %COMSPEC%
+  
+  ::@start \"\" cmd /k @cd /d documents\\github && @git
+  
+  cd /d documents\\github\\hypergroups.github.com
+  ";</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Publish to GitHub with Mathematica on Windows/HTMLFiles/Publish to GitHub with Mathematica on Windows_2.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Publish to GitHub with Mathematica on Windows/HTMLFiles/Publish to GitHub with Mathematica on Windows_2.png" alt="Publish to GitHub with Mathematica on Windows_2.png" width="700" height="455" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[3]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>commandsSet = "git add --all
+  git commit -m \"" <> windowTitle[EvaluationNotebook[]] <> "\"
+  git push"</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Publish to GitHub with Mathematica on Windows/HTMLFiles/Publish to GitHub with Mathematica on Windows_3.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Publish to GitHub with Mathematica on Windows/HTMLFiles/Publish to GitHub with Mathematica on Windows_3.png" alt="Publish to GitHub with Mathematica on Windows_3.png" width="471" height="57" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Publish to GitHub with Mathematica on Windows/HTMLFiles/Publish to GitHub with Mathematica on Windows_4.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Publish to GitHub with Mathematica on Windows/HTMLFiles/Publish to GitHub with Mathematica on Windows_4.png" alt="Publish to GitHub with Mathematica on Windows_4.png" width="489" height="57" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[4]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>batFileToExport = batSample <> commandsSet(*<>"\npause"*);</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Publish to GitHub with Mathematica on Windows/HTMLFiles/Publish to GitHub with Mathematica on Windows_5.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Publish to GitHub with Mathematica on Windows/HTMLFiles/Publish to GitHub with Mathematica on Windows_5.png" alt="Publish to GitHub with Mathematica on Windows_5.png" width="449" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[5]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Export["bat.txt", batFileToExport];
+DeleteFile@batFile;
+CopyFile["bat.txt", batFile];</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Publish to GitHub with Mathematica on Windows/HTMLFiles/Publish to GitHub with Mathematica on Windows_6.gif" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Publish to GitHub with Mathematica on Windows/HTMLFiles/Publish to GitHub with Mathematica on Windows_6.gif" alt="Publish to GitHub with Mathematica on Windows_6.gif" width="279" height="57" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Subsection">
+ 3 Run the .bat file
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[6]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>batFile // SystemOpen</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Publish to GitHub with Mathematica on Windows/HTMLFiles/Publish to GitHub with Mathematica on Windows_7.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Publish to GitHub with Mathematica on Windows/HTMLFiles/Publish to GitHub with Mathematica on Windows_7.png" alt="Publish to GitHub with Mathematica on Windows_7.png" width="161" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Publish to GitHub with Mathematica on Windows/HTMLFiles/Publish to GitHub with Mathematica on Windows_8.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Publish to GitHub with Mathematica on Windows/HTMLFiles/Publish to GitHub with Mathematica on Windows_8.png" alt="Publish to GitHub with Mathematica on Windows_8.png" width="652" height="275" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Section" id="section2">
+ References
+</p>
+
+
+
+<p class="Text">
+ Also, I asked <span><a shape="rect" href="http://stackoverflow.com/questions/18475333/how-can-i-convert-gitshells-commands-into-an-bat-file"><span class="HyperlinkInline">here </span></a></span>and <span><a shape="rect" href="http://mathematica.stackexchange.com/questions/30821/how-can-i-commit-files-to-github-by-mathematica"><span class="HyperlinkInline">here</span></a></span>
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Publish to GitHub with Mathematica on Windows" data-title="Publish to GitHub with Mathematica on Windows" data-url="hypergroups.cn/Publish to GitHub with Mathematica on Windows/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

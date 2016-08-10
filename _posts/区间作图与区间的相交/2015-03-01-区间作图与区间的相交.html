@@ -1,0 +1,325 @@
+---
+layout: post
+category: Mathematica
+title: 区间作图与区间的相交
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/区间作图与区间的相交/index.html#section1" title="区间作图">
+	区间作图</a></p>
+
+	<p class="sectionList Subsection"><a href="/区间作图与区间的相交/index.html#section2" title="剔除相交的区间的后一个">
+	剔除相交的区间的后一个</a></p>
+
+	<p class="sectionList Subsection"><a href="/区间作图与区间的相交/index.html#section3" title="总结">
+	总结</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ 区间作图与区间的相交
+</p>
+
+
+
+<p class="Subtitle">
+ @2015-03-01
+</p>
+
+
+
+<p class="Section" id="section1">
+ 区间作图
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[1]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>inters = {{31, 42}, {58, 74}, {99, 120}, {122, 148}, {159, 190}, {270,
+     311}, {319, 376}, {366, 380}, {366, 390}, {380, 400}, {463, 
+    499}, {511, 556}, {548, 556}, {632, 654}, {657, 678}, {687, 
+    704}, {707, 718}, {725, 732}};</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_1.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_1.png" alt="区间作图与区间的相交_1.png" width="657" height="57" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[2]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>IntervalIntersection @@@ 
+ Select[Partition[Interval /@ inters, 2, 1, 1, {}], Length[#] == 2 &]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_2.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_2.png" alt="区间作图与区间的相交_2.png" width="693" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_3.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_3.png" alt="区间作图与区间的相交_3.png" width="700" height="57" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[3]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>gr = NumberLinePlot[Interval /@ inters]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_4.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_4.png" alt="区间作图与区间的相交_4.png" width="294" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_5.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_5.png" alt="区间作图与区间的相交_5.png" width="360" height="238" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Section" id="section2">
+ 剔除相交的区间的后一个
+</p>
+
+
+
+<p class="Subsection">
+ Basic
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[4]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>len = Length@inters;</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_6.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_6.png" alt="区间作图与区间的相交_6.png" width="156" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[5]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>index = {}; For[i = 1, i < len, i++, 
+ If[inters[[i]][[2]] > inters[[i + 1]][[1]], AppendTo[index, i]]];
+index + 1</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_7.gif" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_7.gif" alt="区间作图与区间的相交_7.gif" width="674" height="57" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_8.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_8.png" alt="区间作图与区间的相交_8.png" width="87" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[6]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>inters[[#]] & /@ (index + 1)</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_9.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_9.png" alt="区间作图与区间的相交_9.png" width="202" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_10.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_10.png" alt="区间作图与区间的相交_10.png" width="363" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Subsection">
+ 改进
+</p>
+
+
+
+<p class="Text">
+ 上面的例子中，3和4剔除后，5是没有必要剔除的。<br clear="none"/>因此多个连续相交的情形要改进下，剔除后自然也是没有相交的区间。
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[7]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>len = Length@inters;
+index = {}; j = 1;
+(*j为要删除元素的前一个的索引号*)
+For[i = 1, i < len, i++, 
+  If[inters[[i + 1]][[1]] <= inters[[j]][[2]], 
+   Print["i=" <> ToString[i]]; Print["True j=" <> ToString[j]]; 
+   AppendTo[index, i + 1];, j = i + 1; Print["i=" <> ToString[i]]]];
+index
+inters[[#]] & /@ (index)</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_11.gif" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_11.gif" alt="区间作图与区间的相交_11.gif" width="511" height="197" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Print">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_12.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_12.png" alt="区间作图与区间的相交_12.png" width="21" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Print">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_13.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_13.png" alt="区间作图与区间的相交_13.png" width="21" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Print">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_14.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_14.png" alt="区间作图与区间的相交_14.png" width="56" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Print">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_15.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_15.png" alt="区间作图与区间的相交_15.png" width="21" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Print">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_16.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_16.png" alt="区间作图与区间的相交_16.png" width="56" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Print">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_17.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_17.png" alt="区间作图与区间的相交_17.png" width="21" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Print">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_18.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_18.png" alt="区间作图与区间的相交_18.png" width="21" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Print">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_19.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_19.png" alt="区间作图与区间的相交_19.png" width="21" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Print">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_20.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_20.png" alt="区间作图与区间的相交_20.png" width="21" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Print">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_21.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_21.png" alt="区间作图与区间的相交_21.png" width="56" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Print">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_22.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_22.png" alt="区间作图与区间的相交_22.png" width="21" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Print">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_23.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_23.png" alt="区间作图与区间的相交_23.png" width="21" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Print">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_24.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_24.png" alt="区间作图与区间的相交_24.png" width="28" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Print">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_25.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_25.png" alt="区间作图与区间的相交_25.png" width="28" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Print">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_26.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_26.png" alt="区间作图与区间的相交_26.png" width="28" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_27.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_27.png" alt="区间作图与区间的相交_27.png" width="66" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_28.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/区间作图与区间的相交/HTMLFiles/区间作图与区间的相交_28.png" alt="区间作图与区间的相交_28.png" width="273" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 可以看到改进版少剔除了一个数，符合预期。
+</p>
+
+
+
+<p class="Section" id="section3">
+ 总结
+</p>
+
+
+
+<p class="Text">
+ 此方法至少在两个场景相关会遇到<br clear="none"/>一个是StringReplacePart时的Overlapping问题，还有一个是比如时间戳是按时间间隔剔除的情形。
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="区间作图与区间的相交" data-title="区间作图与区间的相交" data-url="hypergroups.cn/区间作图与区间的相交/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,385 @@
+---
+layout: post
+category: Help
+title: 博客功能设计
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/博客功能设计/index.html#section1" title="Purpose">
+	Purpose</a></p>
+
+	<p class="sectionList Subsection"><a href="/博客功能设计/index.html#section2" title="博客建站相关">
+	博客建站相关</a></p>
+
+	<p class="sectionList Subsection"><a href="/博客功能设计/index.html#section3" title="综合">
+	综合</a></p>
+
+	<p class="sectionList Subsection"><a href="/博客功能设计/index.html#section4" title="布局相关">
+	布局相关</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ 博客功能设计
+</p>
+
+
+
+<p class="Subtitle">
+ @2015-06-01
+</p>
+
+
+
+<p class="Section" id="section1">
+ Purpose
+</p>
+
+
+
+<p class="Text">
+ 博客主要是为了整理自己的内容，知识管理等。
+</p>
+
+
+
+<p class="Text">
+ 整理学习笔记，整理网络资源，方便一些网络提问的辅助等等
+</p>
+
+
+
+<p class="Text">
+ GitHub-Pages只要建立仓库然后按文件夹生成一些网页然后提交即可，相对较方面。
+</p>
+
+
+
+<p class="Text">
+ 有些东西是报着玩玩的心态，忙的时候或没心情了可能几个月不更新等。
+</p>
+
+
+
+<p class="Section" id="section2">
+ 博客建站相关
+</p>
+
+
+
+<p class="Text">
+ Jekyll+<span style="font-style: italic;">Mathematica</span>+Bootstrap主题[暂时是twitter主题，熟悉一个主题，改一些东西也是要花时间滴]
+</p>
+
+
+
+<p class="Text">
+ <span style="font-style: italic;">Mathematica</span>&rArr;生成处理网页相关&rArr;Jekyll编译
+</p>
+
+
+
+<p class="Text">
+ <span style="font-style: italic;">Mathematica</span>&rArr;生成最终的网页
+</p>
+
+
+
+<p class="Subsection">
+ 功能模块
+</p>
+
+
+
+<p class="Subsubsection">
+ MarkDown
+</p>
+
+
+
+<p class="Subsubsection">
+ MathJax
+</p>
+
+
+
+<p class="Subsubsection">
+ Mathematica语法高亮插件
+</p>
+
+
+
+<p class="Text">
+ google-code-prettify
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="http://mathematica.stackexchange.com/questions/13737/syntax-highlighting-for-mathematica-on-a-blog/13743#13743"><span class="HyperlinkInline">ref</span></a></span>
+</p>
+
+
+
+<p class="Subsubsection">
+ Jquery图片放大插件
+</p>
+
+
+
+<p class="Subsubsection">
+ 站内搜索
+</p>
+
+
+
+<p class="Text">
+ 谷歌时灵时不灵
+</p>
+
+
+
+<p class="Text">
+ 微搜索一开始是好的，后来一直挂了，就不用了
+</p>
+
+
+
+<p class="Text">
+ swiftype暂时用的这个
+</p>
+
+
+
+<p class="Subsubsection">
+ 评论框disqus+多说
+</p>
+
+
+
+<p class="Text">
+ 多说的评论里有一些postID等参数要填写，如果不用Jekyll等编译时，本地生成的网页要把这些变量补足较好，不然会有一些警告或报错。
+</p>
+
+
+
+<p class="Subsubsection">
+ 点赞与转微博按钮
+</p>
+
+
+
+<p class="Subsubsection">
+ Blogroll友情链接
+</p>
+
+
+
+<p class="Subsubsection">
+ 标签
+</p>
+
+
+
+<p class="Text">
+ Jekyll等会自动生成的，并且统计的是每次写文章时要手动写的几个标签。
+</p>
+
+
+
+<p class="Text">
+ 因为经常懒得写，因此不太靠谱。
+</p>
+
+
+
+<p class="Text">
+ tags页面目前简单使用了下WordCloud函数
+</p>
+
+
+
+<p class="Subsubsection">
+ 目录导航
+</p>
+
+
+
+<p class="Subsubsection">
+ 视频页面
+</p>
+
+
+
+<p class="Subsubsection">
+ 图片相册页面
+</p>
+
+
+
+<p class="Subsubsection">
+ LearningPool等主题页面
+</p>
+
+
+
+<p class="Section" id="section3">
+ 综合
+</p>
+
+
+
+<p class="Subsection">
+ 永久链接
+</p>
+
+
+
+<p class="Text">
+ 因为涉及到文章更改的问题，我不太喜欢在链接上加个时间，因此目前只有文件名。
+</p>
+
+
+
+<p class="Section" id="section4">
+ 布局相关
+</p>
+
+
+
+<p class="Subsection">
+ Mode1
+</p>
+
+
+
+<p class="Subsection">
+ 顶栏
+</p>
+
+
+
+<p class="Text">
+ 目前为主题的默认的几个，可以添加几个页面按钮。
+</p>
+
+
+
+<p class="Subsection">
+ 右侧边栏顶---点击显示/隐藏右侧边栏
+</p>
+
+
+
+<p class="Subsection">
+ 右侧边栏---章节跳转
+</p>
+
+
+
+<p class="Subsection">
+ 左侧边栏顶---点击显示/隐藏左侧边栏[暂无]
+</p>
+
+
+
+<p class="Subsection">
+ 左侧边栏---单元的折叠[暂无]
+</p>
+
+
+
+<p class="Text">
+ 如：隐藏所有非Section级别单元。
+</p>
+
+
+
+<p class="Text">
+ 如：展开或缩放所有MathematicaCode样式的代码。
+</p>
+
+
+
+<p class="Subsection">
+ Mode1改进1[暂无]
+</p>
+
+
+
+<p class="Text">
+ 左侧边栏涉及到与原主题布局中，放大时，左侧的空隙问题，如果增加左侧边栏，但是原来的文章体的左边没有一个div时，效果不大好。<br clear="none"/>故可以把左侧边栏实际操作时，由按钮弹出。
+</p>
+
+
+
+<p class="Text">
+ 文章样式增加左侧单元边距等辅助。
+</p>
+
+
+
+<p class="Text">
+ 弹出控制面板如果在右侧边栏，则可以在章节导航隐藏时，使用。
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="博客功能设计" data-title="博客功能设计" data-url="hypergroups.cn/博客功能设计/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

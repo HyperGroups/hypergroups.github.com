@@ -1,0 +1,283 @@
+---
+layout: post
+category: Computer
+title: Mahout-Kmeans笔记
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/MBlog/Post1.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/Mahout-Kmeans笔记/index.html#section1" title="Enviroment">
+	Enviroment</a></p>
+
+	<p class="sectionList Subsection"><a href="/Mahout-Kmeans笔记/index.html#section2" title="Data Prepare">
+	Data Prepare</a></p>
+
+	<p class="sectionList Subsection"><a href="/Mahout-Kmeans笔记/index.html#section3" title="检查数据">
+	检查数据</a></p>
+
+	<p class="sectionList Subsection"><a href="/Mahout-Kmeans笔记/index.html#section4" title="数据转换">
+	数据转换</a></p>
+
+	<p class="sectionList Subsection"><a href="/Mahout-Kmeans笔记/index.html#section5" title="Kmeans">
+	Kmeans</a></p>
+
+	<p class="sectionList Subsection"><a href="/Mahout-Kmeans笔记/index.html#section6" title="总结">
+	总结</a></p>
+
+	<p class="sectionList Subsection"><a href="/Mahout-Kmeans笔记/index.html#section7" title="References">
+	References</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ Mahout-Kmeans笔记
+</p>
+
+
+
+<p class="Subtitle">
+ @2015-02-05
+</p>
+
+
+
+<p class="Section" id="section1">
+ Enviroment
+</p>
+
+
+
+<p class="Text">
+ Ubuntu 14.10 x64 hadoop 2.5.2 Local + Mahout 0.9
+</p>
+
+
+
+<p class="Text">
+ hadoop 2.2以上Mahout 0.9可以自己编译一下，但是要去搜索两个补丁，比如2.4的，主要是在相应的.pom里把版本号改一下，经实测，没有编译hadoop的各种问题，只是生成的结果目录跟官网下载的编译版本的目录结构上会有差异。
+</p>
+
+
+
+<p class="Section" id="section2">
+ Data Prepare
+</p>
+
+
+
+<p class="Text">
+ Note: 数据集注意别错了，出现过的问题：有一行的数据只有30列，就会有一个cardinality的报错。估计要么是下载的数据源不靠谱，要么是我复制数据的时候手抖了一下，最后一行小少选了30列，要么就是下载的数据复制到VM的系统里有丢失[经常要复制两次才靠谱]
+</p>
+
+
+
+<p class="Text">
+ 默认的example包中的kmeans，不指定输入路径时，默认样例数据输入的hdfs路径可能在这里/user/hadoop/testdata，而不是/testdata，具体看本地hadoop的配置。
+</p>
+
+
+
+<p class="Section" id="section3">
+ 检查数据
+</p>
+
+
+
+<p class="Text">
+ hadoop fs -put /user/hadoop/testdata
+</p>
+
+
+
+<p class="Section" id="section4">
+ 数据转换
+</p>
+
+
+
+<p class="Text">
+ 这一步对于跑例子来说不是必须的，因为例子中把这一步都合并了。
+</p>
+
+
+
+<p class="Text">
+ InputDriver
+</p>
+
+
+
+<p class="Text">
+ 这一步是把普通的数据格式转成mahout序列化的文件，要seqdumper后查看，会发现他把数据的列数作为Key的形式。
+</p>
+
+
+
+<p class="Text">
+ fs -put /user/hadoop/testdata
+</p>
+
+
+
+<p class="Text">
+ #把数据序列化为mahout输入<br clear="none"/>mahout org.apache.mahout.clustering.conversion.InputDriver -i /testdata/kmeans_data.txt<br clear="none"/><br clear="none"/>#把序列化的结果，拉到本地来查看<br clear="none"/>mahout seqdumper --input /user/hadoop/output/part-m-00000 --output /home/hadoop/part-m-00000
+</p>
+
+
+
+<p class="Section" id="section5">
+ Kmeans
+</p>
+
+
+
+<p class="Text">
+ #kmeans<br clear="none"/>mahout org.apache.mahout.clustering.syntheticcontrol.kmeans.Job
+</p>
+
+
+
+<p class="Input">
+ <a shape="rect" id="Ignore"></a>
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mahout-Kmeans笔记/HTMLFiles/Mahout-Kmeans笔记_1.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mahout-Kmeans笔记/HTMLFiles/Mahout-Kmeans笔记_1.png" alt="Mahout-Kmeans笔记_1.png" width="642" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Subsection">
+ 结果查看
+</p>
+
+
+
+<p class="Text">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mahout-Kmeans笔记/HTMLFiles/Mahout-Kmeans笔记_2.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mahout-Kmeans笔记/HTMLFiles/Mahout-Kmeans笔记_2.png" alt="Mahout-Kmeans笔记_2.png" width="355" height="1236" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 其中，10次迭代产生10个文件夹，最终的文件在/user/hadoop/output/clusters-10-final/part-r-00000中，但是只用seqdumper只能拿到分类的数目，要使用clusterdump才能拿到最终的一个结果。
+</p>
+
+
+
+<p class="Text">
+ mahout seqdumper --input /user/hadoop/output/clusters-10-final/part-r-00000 --output /home/hadoop/kmeans.result.txt
+</p>
+
+
+
+<p class="Text">
+ Key: 0: Value: org.apache.mahout.clustering.iterator.ClusterWritable@7c670b0<br clear="none"/>Key: 1: Value: org.apache.mahout.clustering.iterator.ClusterWritable@7c670b0<br clear="none"/>Key: 2: Value: org.apache.mahout.clustering.iterator.ClusterWritable@7c670b0<br clear="none"/>Key: 3: Value: org.apache.mahout.clustering.iterator.ClusterWritable@7c670b0<br clear="none"/>Key: 4: Value: org.apache.mahout.clustering.iterator.ClusterWritable@7c670b0<br clear="none"/>Key: 5: Value: org.apache.mahout.clustering.iterator.ClusterWritable@7c670b0<br clear="none"/>Count: 6
+</p>
+
+
+
+<p class="Text">
+ mahout seqdumper --input /user/hadoop/output/clusteredPoints/part-m-00000 --output /home/hadoop/kmeans.clusteredPoints.txt
+</p>
+
+
+
+<p class="Text">
+ Input Path: /user/hadoop/output/clusteredPoints/part-m-00000<br clear="none"/>Key class: class org.apache.hadoop.io.IntWritable Value Class: class org.apache.mahout.clustering.classify.WeightedPropertyVectorWritable<br clear="none"/>Key: 98: Value: wt: 1.0 distance: 27.068895870788005&nbsp;&nbsp;vec: 60 = [28.781, 34.463, 31.338, 31.283, 28.921, 33.760, 25.397, 27.785, 35.248, 27.116, 32.872, 29.217, 36.025, 32.337, 34.525, 32.872, 34.117, 26.524, 27.662, 26.369, 25.774, 29.270, 30.733, 29.505, 33.029, 25.040, 28.917, 24.344, 26.120, 34.942, 25.029, 26.631, 35.654, 28.435, 29.150, 28.158, 26.193, 33.318, 30.977, 27.044, 35.534, 26.235, 28.996, 32.004, 31.056, 34.255, 28.072, 28.940, 35.497, 29.747, 31.433, 24.556, 33.743, 25.047, 34.932, 34.988, 32.472, 33.376, 25.465, 25.872]
+</p>
+
+
+
+<p class="Text">
+ distance是点到中心的距离。
+</p>
+
+
+
+<p class="Text">
+ mahout clusterdump --input /user/hadoop/output/clusters-10-final --pointsDir /user/hadoop/output/clusteredPoints --output /home/hadoop/kmeans.cluster_result.txt
+</p>
+
+
+
+<p class="Text">
+ CL-32{n=7 c=[31.233, 36.959, 40.813, 42.268, 36.190, 31.346, 24.133, 15.885, 17.567, 18.853, 25.427, 32.991, 42.495, 43.548, 41.307, 35.565, 27.053, 18.885, 18.584, 19.133, 25.058, 32.958, 39.679, 42.313, 41.398, 37.590, 33.047, 21.156, 18.761, 17.984, 20.603, 26.838, 34.474, 41.208, 42.480, 40.667, 33.434, 27.221, 18.512, 17.914, 22.630, 24.177, 32.080, 36.726, 40.738, 40.612, 37.544, 27.513, 22.225, 17.954, 16.265, 22.359, 28.801, 36.117, 40.782, 40.727, 40.712, 34.092, 24.581, 16.896] r=[4.174, 1.649, 3.674, 3.395, 3.642, 3.388, 2.293, 1.811, 4.130, 3.326, 4.033, 3.042, 3.044, 3.900, 4.717, 4.310, 3.330, 2.370, 3.668, 2.358, 3.215, 4.126, 1.910, 3.815, 5.071, 4.863, 3.767, 3.745, 2.670, 2.684, 2.591, 3.784, 3.605, 3.499, 3.758, 4.463, 5.747, 4.874, 3.369, 4.010, 3.400, 5.349, 3.227, 5.278, 3.202, 4.485, 5.267, 4.921, 2.205, 3.467, 3.560, 2.147, 2.989, 3.637, 3.299, 3.088, 3.388, 4.747, 4.802, 2.888]}<br clear="none"/>每个点的坐标数据<br clear="none"/>&nbsp;&nbsp;&nbsp;&nbsp;Weight : [props - optional]:&nbsp;&nbsp;Point:<br clear="none"/>&nbsp;&nbsp;&nbsp;&nbsp;1.0 : [distance=24.064938230716344]: 60 = [29.404, 37.915, 42.934, 47.060, 32.887, 33.227, 20.522, 17.818, 12.833, 24.464, 23.434, 29.958, 43.304, 38.542, 36.879, 37.967, 22.755, 15.089, 20.041, 17.150, 28.869, 35.948, 39.737, 45.526, 39.993, 36.738, 33.915, 17.729, 22.022, 15.030, 20.575, 23.147, 34.885, 43.678, 37.321, 37.618, 33.097, 21.719, 14.976, 15.721, 20.752, 20.927, 32.745, 37.558, 37.738, 37.727, 32.070, 28.181, 24.976, 13.317, 13.613, 22.683, 23.051, 38.080, 38.682, 40.471, 42.466, 37.181, 19.465, 19.703]<br clear="none"/>。。。&hArr;。。。
+</p>
+
+
+
+<p class="Text">
+ vec: n=7表示的是这一类只有7个点，c表示的是中心点的坐标，r表示的是每一个属性方向上的半径。
+</p>
+
+
+
+<p class="Section" id="section6">
+ 总结
+</p>
+
+
+
+<p class="Text">
+ 本地跑了一个例子，在虚拟机里，也没有设置过提高性能，但是171行60列的数据集，跑了8分钟，跟WordCount形成对比来说，确实略慢。
+</p>
+
+
+
+<p class="Section" id="section7">
+ References
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Mahout-Kmeans笔记" data-title="Mahout-Kmeans笔记" data-url="hypergroups.cn/Mahout-Kmeans笔记/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

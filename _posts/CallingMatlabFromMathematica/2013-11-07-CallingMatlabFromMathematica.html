@@ -1,0 +1,216 @@
+---
+layout: post
+category: Mathematica
+title: CallingMatlabFromMathematica
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/CallingMatlabFromMathematica/index.html#section1" title="MatLink程序包">
+	MatLink程序包</a></p>
+
+	<p class="sectionList Subsection"><a href="/CallingMatlabFromMathematica/index.html#section2" title="Sample">
+	Sample</a></p>
+
+	<p class="sectionList Subsection"><a href="/CallingMatlabFromMathematica/index.html#section3" title="Futher">
+	Futher</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ Mathematica和Matlab的互相调用
+</p>
+
+
+
+<p class="Subtitle">
+ @2013-11-07
+</p>
+
+
+
+<p class="Section" id="section1">
+ MatLink程序包
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="http://matlink.org/"><span class="HyperlinkInline">link</span></a></span>
+</p>
+
+
+
+<p class="Section" id="section2">
+ Sample
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[1]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Needs["MATLink`"]
+OpenMATLAB[]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CallingMatlabFromMathematica/HTMLFiles/CallingMatlabFromMathematica_1.gif" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CallingMatlabFromMathematica/HTMLFiles/CallingMatlabFromMathematica_1.gif" alt="CallingMatlabFromMathematica_1.gif" width="137" height="37" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[2]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>MEvaluate["mat = magic(4)"]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CallingMatlabFromMathematica/HTMLFiles/CallingMatlabFromMathematica_2.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CallingMatlabFromMathematica/HTMLFiles/CallingMatlabFromMathematica_2.png" alt="CallingMatlabFromMathematica_2.png" width="219" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CallingMatlabFromMathematica/HTMLFiles/CallingMatlabFromMathematica_3.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CallingMatlabFromMathematica/HTMLFiles/CallingMatlabFromMathematica_3.png" alt="CallingMatlabFromMathematica_3.png" width="192" height="177" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[3]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>matrix = RotationMatrix[90 Degree, {0, 0, 1}]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CallingMatlabFromMathematica/HTMLFiles/CallingMatlabFromMathematica_4.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CallingMatlabFromMathematica/HTMLFiles/CallingMatlabFromMathematica_4.png" alt="CallingMatlabFromMathematica_4.png" width="340" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CallingMatlabFromMathematica/HTMLFiles/CallingMatlabFromMathematica_5.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CallingMatlabFromMathematica/HTMLFiles/CallingMatlabFromMathematica_5.png" alt="CallingMatlabFromMathematica_5.png" width="249" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[4]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>matrix2Matlab[matrix_] := 
+ "[" <> StringReplace[
+   ExportString[matrix, "CSV"], {"\n" -> ";", "," -> " "}] <> "]"</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CallingMatlabFromMathematica/HTMLFiles/CallingMatlabFromMathematica_6.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CallingMatlabFromMathematica/HTMLFiles/CallingMatlabFromMathematica_6.png" alt="CallingMatlabFromMathematica_6.png" width="619" height="37" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[5]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>matrixMatlab = matrix2Matlab[matrix]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CallingMatlabFromMathematica/HTMLFiles/CallingMatlabFromMathematica_7.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CallingMatlabFromMathematica/HTMLFiles/CallingMatlabFromMathematica_7.png" alt="CallingMatlabFromMathematica_7.png" width="283" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CallingMatlabFromMathematica/HTMLFiles/CallingMatlabFromMathematica_8.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CallingMatlabFromMathematica/HTMLFiles/CallingMatlabFromMathematica_8.png" alt="CallingMatlabFromMathematica_8.png" width="160" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[6]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>MEvaluate[
+ "[yaw, pitch, roll] = dcm2angle(" <> matrixMatlab <> ",'YXZ')"]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CallingMatlabFromMathematica/HTMLFiles/CallingMatlabFromMathematica_9.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CallingMatlabFromMathematica/HTMLFiles/CallingMatlabFromMathematica_9.png" alt="CallingMatlabFromMathematica_9.png" width="569" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CallingMatlabFromMathematica/HTMLFiles/CallingMatlabFromMathematica_10.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CallingMatlabFromMathematica/HTMLFiles/CallingMatlabFromMathematica_10.png" alt="CallingMatlabFromMathematica_10.png" width="80" height="317" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Section" id="section3">
+ Futher
+</p>
+
+
+
+<p class="Text">
+ 把Matlab当成Mathematica的工具箱吧~
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="CallingMatlabFromMathematica" data-title="CallingMatlabFromMathematica" data-url="hypergroups.cn/CallingMatlabFromMathematica/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

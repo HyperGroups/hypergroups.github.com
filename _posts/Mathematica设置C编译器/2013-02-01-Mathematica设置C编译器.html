@@ -1,0 +1,218 @@
+---
+layout: post
+category: Mathematica
+title: Mathematica设置C编译器
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/Mathematica设置C编译器/index.html#section1" title="Mathematica 9.0">
+	Mathematica 9.0</a></p>
+
+	<p class="sectionList Subsection"><a href="/Mathematica设置C编译器/index.html#section2" title="设置新编译器">
+	设置新编译器</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ Mathematica设置C编译器
+</p>
+
+
+
+<p class="Subtitle">
+ @2013-02-01
+</p>
+
+
+
+<p class="Section" id="section1">
+ <span style="font-style: italic;">Mathematica</span> 9.0
+</p>
+
+
+
+<p class="Text">
+ 因为Mathematica某一版本推出后，使用的是当时的其他产品的信息，比如JDK等，比如9.0只识别到VC2010
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[1]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Needs["CCompilerDriver`"]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica设置C编译器/HTMLFiles/Mathematica设置C编译器_1.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica设置C编译器/HTMLFiles/Mathematica设置C编译器_1.png" alt="Mathematica设置C编译器_1.png" width="200" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Text">
+ 若装了VC2012，不加选项的使用就没有编译器了。
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[2]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>CCompilers[]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica设置C编译器/HTMLFiles/Mathematica设置C编译器_2.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica设置C编译器/HTMLFiles/Mathematica设置C编译器_2.png" alt="Mathematica设置C编译器_2.png" width="96" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica设置C编译器/HTMLFiles/Mathematica设置C编译器_3.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica设置C编译器/HTMLFiles/Mathematica设置C编译器_3.png" alt="Mathematica设置C编译器_3.png" width="16" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 查看选项指定的设置
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[3]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>CCompilers[Full]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica设置C编译器/HTMLFiles/Mathematica设置C编译器_4.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica设置C编译器/HTMLFiles/Mathematica设置C编译器_4.png" alt="Mathematica设置C编译器_4.png" width="128" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica设置C编译器/HTMLFiles/Mathematica设置C编译器_5.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica设置C编译器/HTMLFiles/Mathematica设置C编译器_5.png" alt="Mathematica设置C编译器_5.png" width="700" height="77" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Section" id="section2">
+ 设置新编译器
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[4]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>$CCompiler = {"Name" -> "Visual Studio", 
+  "Compiler" -> 
+   CCompilerDriver`VisualStudioCompiler`VisualStudioCompiler, 
+  "CompilerInstallation" -> 
+   "E:\\Program Files (x86)\\Microsoft Visual Studio 11.0"}</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica设置C编译器/HTMLFiles/Mathematica设置C编译器_6.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica设置C编译器/HTMLFiles/Mathematica设置C编译器_6.png" alt="Mathematica设置C编译器_6.png" width="661" height="57" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica设置C编译器/HTMLFiles/Mathematica设置C编译器_7.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica设置C编译器/HTMLFiles/Mathematica设置C编译器_7.png" alt="Mathematica设置C编译器_7.png" width="700" height="36" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ "Compiler"&rarr;CCompilerDriver`VisualStudioCompiler`VisualStudioCompiler
+</p>
+
+
+
+<p class="Text">
+ 这个要怎么知道呢？如果你以前装过Mathematica能识别的版本的号，有文档里有这个就能复制过来，我自己也忘记了，后来打开一个旧的nb文档复制过来。<br clear="none"/>因为之前在有个论坛发过一个攻略，就上去查看了一下。
+</p>
+
+
+
+<p class="Text">
+ 记住就是记一个关键词VisualStudio
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[5]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>$CCompiler</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica设置C编译器/HTMLFiles/Mathematica设置C编译器_8.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica设置C编译器/HTMLFiles/Mathematica设置C编译器_8.png" alt="Mathematica设置C编译器_8.png" width="80" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica设置C编译器/HTMLFiles/Mathematica设置C编译器_9.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Mathematica设置C编译器/HTMLFiles/Mathematica设置C编译器_9.png" alt="Mathematica设置C编译器_9.png" width="700" height="55" style="vertical-align:middle"/></a>
+</p>
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Mathematica设置C编译器" data-title="Mathematica设置C编译器" data-url="hypergroups.cn/Mathematica设置C编译器/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

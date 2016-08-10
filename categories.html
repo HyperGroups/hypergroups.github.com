@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<div class="well">
+
+{% for category in site.categories %}
+<h1>{{ category | first | capitalize }}  ( {{ category | last | size }} )</h1>
+
+<ul class="arc-list">
+    {% for post in category.last %}
+        <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.date | date: "%b %-d" }} - {{ post.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endfor %}
+
+</div>

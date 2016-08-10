@@ -1,0 +1,355 @@
+---
+layout: post
+category: Mathematica
+title: CDF介绍
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/CDF介绍/index.html#section1" title="CDF播放器">
+	CDF播放器</a></p>
+
+	<p class="sectionList Subsection"><a href="/CDF介绍/index.html#section2" title="CDF文档(可计算文档格式)">
+	CDF文档(可计算文档格式)</a></p>
+
+	<p class="sectionList Subsection"><a href="/CDF介绍/index.html#section3" title="Wolfram-Demonstration">
+	Wolfram-Demonstration</a></p>
+
+	<p class="sectionList Subsection"><a href="/CDF介绍/index.html#section4" title="几个实用的Demonstraction介绍">
+	几个实用的Demonstraction介绍</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ CDF介绍
+</p>
+
+
+
+<p class="Subtitle">
+ @2014-04-01
+</p>
+
+
+
+<p class="Text">
+ 一般在公司使用，比如一个人开发了一个工具，那么能否打包成类似exe的东西给同事使用是一个最常考虑的东西。
+</p>
+
+
+
+<p class="Text">
+ 像Matlab强化了与C的混编mex及生成的exe和dll在新的机器上只要装一下MATLAB Compiler Runtime (<span><a shape="rect" href="http://www.mathworks.cn/products/compiler/mcr/index.html"><span class="HyperlinkInline">MCR</span></a></span>)即可。
+</p>
+
+
+
+<p class="Text">
+ 在这方面，似乎Mathematica不如Matlab方便。
+</p>
+
+
+
+<p class="Section" id="section1">
+ CDF播放器
+</p>
+
+
+
+<p class="Text">
+ 像Mathematica这种不太低层的，有一种方案是把小工具弄成CDF，在电脑上安装一下CDF播放器[约200MB]，即可以浏览播放在线的Demonstration，或打开CDF文档。而直接安装一个Mathematica则要1-2G
+</p>
+
+
+
+<p class="Text">
+ <span style="font-style: italic;">Mathematica</span> 10.0结合Alpha和Cloud应该增加了这种APP，更方便把CDF这种东西搞到云端。
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="http://mathematica.stackexchange.com/questions/41094/is-it-possible-to-embed-a-cdf-file-into-a-github-page"><span class="HyperlinkInline">吐槽一下</span></a></span>，GitHub-Page竟然不支持CDF[传CDF到网站的空间，然后生成一段JS放到页面里，能自动加哉CDF播放器(类似浏览器插件)][再吐槽一下，CDF播放器或看在线的Demonstration时Mathematica的自动打开偶尔或经常会遇到些问题]
+</p>
+
+
+
+<p class="Text">
+ 这样，至少比安装Mathematica要方便，并且是免费使用的。当然，缺点是不太支持与文件的交互以及进行临时的计算等
+</p>
+
+
+
+<p class="Section" id="section2">
+ CDF文档(可计算文档格式)
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="http://www.wolfram.com/cdf/"><span class="HyperlinkInline">CDF</span></a></span>
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_1.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_1.png" alt="CDF介绍_1.png" width="652" height="111" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ 就是一些报表呀什么的能够在播放幻灯片演示的时候，能动态显示效果。
+</p>
+
+
+
+<p class="Text">
+ CDF文档也可以单独用来作为笔记-报告的文档格式，当然像nb格式一下也可以转化为PDF，网页等。
+</p>
+
+
+
+<p class="Section" id="section3">
+ Wolfram-Demonstration
+</p>
+
+
+
+<p class="Text">
+ 演示程序的制作
+</p>
+
+
+
+<p class="Subsection">
+ 优点
+</p>
+
+
+
+<p class="Text">
+ 制作快速，[复杂的也不是太快速]，方面在线部署演示。
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_2.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_2.png" alt="CDF介绍_2.png" width="474" height="622" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ 一些算法实例，如数字图像处理中的一些例子，涉及到调整参数查看效果的，是非常方便的。
+</p>
+
+
+
+<p class="Text">
+ 一些教学辅助的实例，比如演示欧拉角，立体几何里的辅助线的添加等三维效果
+</p>
+
+
+
+<p class="Subsection">
+ 缺点
+</p>
+
+
+
+<p class="Text">
+ 集成在了一个Manipulate函数中，相较Mathematica里写一个文档进行类似的操作，或写一个程序包或GUI来是有所限制，统一管理，便于统一发布，但是也就没有一些自由。
+</p>
+
+
+
+<p class="Text">
+ 对于轻量级的一些应用来说，比如我写一些函数，想给同事使用，还是同事电脑里也装个Mathematica比较方便，也便于学习与调试等。
+</p>
+
+
+
+<p class="Section" id="section4">
+ 几个实用的Demonstraction介绍
+</p>
+
+
+
+<p class="Subsection">
+ 美术-动画相关
+</p>
+
+
+
+<p class="Subsection">
+ 曲面建模[曲面约束][从曲面能生成一些曲线等][法向量剑阵]
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="http://demonstrations.wolfram.com/RandomBSplineSurfaces/"><span class="HyperlinkInline">Random B-Spline Surfaces</span></a></span>
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_3.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_3.png" alt="CDF介绍_3.png" width="652" height="556" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_4.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_4.png" alt="CDF介绍_4.png" width="568" height="531" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_5.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_5.png" alt="CDF介绍_5.png" width="646" height="486" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_6.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_6.png" alt="CDF介绍_6.png" width="558" height="594" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ 相较于在3dsMax或使用C++等来编制类似的控制器，Mathematica有更快速，更易修改，自定义程度，面向任务更好等。
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_7.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_7.png" alt="CDF介绍_7.png" width="463" height="544" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_8.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_8.png" alt="CDF介绍_8.png" width="644" height="609" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_9.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_9.png" alt="CDF介绍_9.png" width="500" height="595" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_10.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_10.png" alt="CDF介绍_10.png" width="652" height="510" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_11.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_11.png" alt="CDF介绍_11.png" width="432" height="562" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_12.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_12.png" alt="CDF介绍_12.png" width="652" height="525" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_13.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_13.png" alt="CDF介绍_13.png" width="645" height="636" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_14.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_14.png" alt="CDF介绍_14.png" width="640" height="559" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_15.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_15.png" alt="CDF介绍_15.png" width="456" height="601" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_16.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_16.png" alt="CDF介绍_16.png" width="551" height="598" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_17.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_17.png" alt="CDF介绍_17.png" width="652" height="568" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_18.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/CDF介绍/HTMLFiles/CDF介绍_18.png" alt="CDF介绍_18.png" width="617" height="500" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="CDF介绍" data-title="CDF介绍" data-url="hypergroups.cn/CDF介绍/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,355 @@
+---
+layout: post
+category: Computer
+title: Numpy笔记
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/Numpy笔记/index.html#section1" title="">
+	</a></p>
+
+	<p class="sectionList Subsection"><a href="/Numpy笔记/index.html#section2" title="">
+	</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ Numpy笔记
+</p>
+
+
+
+<p class="Chapter">
+ @2015-8-31
+</p>
+
+
+
+<p class="Section" id="section1">
+ 
+</p>
+
+
+
+<p class="Subsection">
+ Random
+</p>
+
+
+
+<p class="Subsubsection">
+ <span><a shape="rect" href="http://www.mamicode.com/info-detail-507676.html"><span class="HyperlinkInline">ref</span></a></span>
+</p>
+
+
+
+<p class="Text">
+ np.random.random_integer(5,size=(4,5))
+</p>
+
+
+
+<p class="Text">
+ np.random.randint(5,size=(4,5))
+</p>
+
+
+
+<p class="Text">
+ np.random.random([4,5])
+</p>
+
+
+
+<p class="Text">
+ choice&hArr;RandomChoice
+</p>
+
+
+
+<p class="Text">
+ mat=np.random.choice(f1,16)
+</p>
+
+
+
+<p class="Text">
+ bytes&hArr;ByteCount
+</p>
+
+
+
+<p class="Text">
+ ranf
+</p>
+
+
+
+<p class="Text">
+ permutation返回一个随机排列
+</p>
+
+
+
+<p class="Subsubsection">
+ <span><a shape="rect" href="http://my.oschina.net/lionets/blog/276574"><span class="HyperlinkInline">ref2</span></a></span>
+</p>
+
+
+
+<p class="Text">
+ strides
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Numpy笔记/HTMLFiles/Numpy笔记_1.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Numpy笔记/HTMLFiles/Numpy笔记_1.png" alt="Numpy笔记_1.png" width="459" height="80" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ 为什么是4？strides返回的是字节数
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Numpy笔记/HTMLFiles/Numpy笔记_2.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Numpy笔记/HTMLFiles/Numpy笔记_2.png" alt="Numpy笔记_2.png" width="214" height="101" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ 那么这里的第一个数16表示的是4*4=16字节，那么第2个数4怎么理解呢？
+</p>
+
+
+
+<p class="Text">
+ dtype 支持的数字类型有： <br clear="none"/><br clear="none"/><br clear="none"/>######################&nbsp;&nbsp;&nbsp;&nbsp;***********************************<br clear="none"/>bool_&nbsp;&nbsp;&nbsp;&nbsp;占一个字节的布尔类型（True/False）<br clear="none"/>int_&nbsp;&nbsp;&nbsp;&nbsp;默认的整数类型<br clear="none"/>intc&nbsp;&nbsp;&nbsp;&nbsp;与 C int 相同，通常为 int32 或 int64<br clear="none"/>intp&nbsp;&nbsp;&nbsp;&nbsp;用于索引的整数（同 C ssize_t，int32 或 int64）<br clear="none"/>int8、16、32、64&nbsp;&nbsp;&nbsp;&nbsp;不同位数的整数<br clear="none"/>uint8、16、32、64&nbsp;&nbsp;&nbsp;&nbsp;不同位数的无符号整数<br clear="none"/>float_&nbsp;&nbsp;&nbsp;&nbsp;float64<br clear="none"/>float16、32、64&nbsp;&nbsp;&nbsp;&nbsp;不同位数的浮点数<br clear="none"/>complex_&nbsp;&nbsp;&nbsp;&nbsp;complex128<br clear="none"/>complex64、128&nbsp;&nbsp;&nbsp;&nbsp;不同位数的复数
+</p>
+
+
+
+<p class="Text">
+ array(object, dtype=None, copy=True, order=None, subok=False, ndmin=0)
+</p>
+
+
+
+<p class="Text">
+ #####################&nbsp;&nbsp;&nbsp;&nbsp;*************************************************<br clear="none"/>asarray&nbsp;&nbsp;&nbsp;&nbsp;将输入转换为 ndarray，若输入本身是 ndarray 就不复制<br clear="none"/>arange&nbsp;&nbsp;&nbsp;&nbsp;类似于内建 range 函数，不过返回的是一个一维 ndarray<br clear="none"/>ones、ones_like&nbsp;&nbsp;&nbsp;&nbsp;根据指定形状和 dtype 创建一个全 1 数组<br clear="none"/>zeros、zeros_like&nbsp;&nbsp;&nbsp;&nbsp;根据指定形状和 dtype 创建一个全 0 数组<br clear="none"/>empty、empty_like&nbsp;&nbsp;&nbsp;&nbsp;创建新数组，但只分配内存空间不赋值<br clear="none"/>eye、identity&nbsp;&nbsp;&nbsp;&nbsp;创建一个正方的N&times;N单位矩阵（对角线为1，其余为0）
+</p>
+
+
+
+<p class="Text">
+ .astype(dtype)
+</p>
+
+
+
+<p class="Text">
+ sort
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Numpy笔记/HTMLFiles/Numpy笔记_3.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Numpy笔记/HTMLFiles/Numpy笔记_3.png" alt="Numpy笔记_3.png" width="222" height="417" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ 默认按行排序，效果跟参数1一样，参数为0时按列排序，参数为-1表示最外层的轴，这里只有2维，因此跟1的效果是一样的
+</p>
+
+
+
+<p class="Text">
+ min，max&nbsp;&nbsp;&nbsp;&nbsp;最小值和最大值<br clear="none"/>argmin，argmax&nbsp;&nbsp;&nbsp;&nbsp;最小值和最大值的索引
+</p>
+
+
+
+<p class="Text">
+ 用于布尔型数组的方法<br clear="none"/>有两个方法 .any() 和 .all() 可以用于判断某个数组中是否存在或全部为 True。这两个方法也同样支持 axis 轴向参数：
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Numpy笔记/HTMLFiles/Numpy笔记_4.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Numpy笔记/HTMLFiles/Numpy笔记_4.png" alt="Numpy笔记_4.png" width="387" height="166" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ 实例中因为有一个0，bool(0)==False
+</p>
+
+
+
+<p class="Text">
+ 真正的问题在于不同大小的数组间运算时会发生什么。广播（broadcasting）指的是不同形状的数组之间的算数运算的执行方式，这也是 Numpy 的核心内容之一。
+</p>
+
+
+
+<p class="Text">
+ 广播遵循的原则为：如果两个数组的后缘维度（trailing dimension，即从末尾开始算起的维度）的轴长度相符或其中一方的长度为 1，则认为它们是广播兼容的。广播会在缺失和（或）长度为 1 的维度上进行。
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Numpy笔记/HTMLFiles/Numpy笔记_5.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Numpy笔记/HTMLFiles/Numpy笔记_5.png" alt="Numpy笔记_5.png" width="218" height="255" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ 这里::4表示的是一种省略写法，相当于0:3:1，其中1是间隔step
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Numpy笔记/HTMLFiles/Numpy笔记_6.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Numpy笔记/HTMLFiles/Numpy笔记_6.png" alt="Numpy笔记_6.png" width="219" height="185" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ mat[mat%2==0]
+</p>
+
+
+
+<p class="Text">
+ 布尔型索引
+</p>
+
+
+
+<p class="Text">
+ 花式索引（fancy indexing）是一个 Numpy 术语，它指的是利用整数数组进行索引，这里的整数数组起到了index的作用。
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Numpy笔记/HTMLFiles/Numpy笔记_7.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Numpy笔记/HTMLFiles/Numpy笔记_7.png" alt="Numpy笔记_7.png" width="309" height="232" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ 一些函数
+</p>
+
+
+
+<p class="Subsection">
+ 一元函数
+</p>
+
+
+
+<p class="Text">
+ abs，fabs&nbsp;&nbsp;&nbsp;&nbsp;整数、浮点、复数的绝对值，对于非复数，可用更快的 fabs<br clear="none"/>sqrt&nbsp;&nbsp;&nbsp;&nbsp;平方根，等于 arr**0.5<br clear="none"/>square&nbsp;&nbsp;&nbsp;&nbsp;平方，等于 arr**2<br clear="none"/>exp&nbsp;&nbsp;&nbsp;&nbsp;以 e 为底的指数函数<br clear="none"/>log，log10，log2，log1p&nbsp;&nbsp;&nbsp;&nbsp;以 e 为底的对数函数<br clear="none"/>sign&nbsp;&nbsp;&nbsp;&nbsp;计算各元素的正负号，1（正），0（零），-1（负）<br clear="none"/>ceil&nbsp;&nbsp;&nbsp;&nbsp;计算大于等于该值的最小整数<br clear="none"/>floor&nbsp;&nbsp;&nbsp;&nbsp;计算小于等于该值的最大整数<br clear="none"/>rint&nbsp;&nbsp;&nbsp;&nbsp;round int，四舍五入到整数<br clear="none"/>modf&nbsp;&nbsp;&nbsp;&nbsp;将数组的整数和小数部分以两个独立数组的形式返回<br clear="none"/>isnan&nbsp;&nbsp;&nbsp;&nbsp;返回一个 "哪些值是 NaN" 的布尔型数组<br clear="none"/>isfinite，isinf&nbsp;&nbsp;&nbsp;&nbsp;返回是否是有穷（无穷）的布尔型数组<br clear="none"/>arccos，arccosh...等同上&nbsp;&nbsp;&nbsp;&nbsp;反三角函数<br clear="none"/>logical_not&nbsp;&nbsp;&nbsp;&nbsp;计算个元素 not x 的真值，等于 -arr<br clear="none"/>unique&nbsp;&nbsp;&nbsp;&nbsp;计算元素唯一值并返回排序后的结果
+</p>
+
+
+
+<p class="Subsubsection">
+ 二元函数
+</p>
+
+
+
+<p class="Text">
+ add&nbsp;&nbsp;&nbsp;&nbsp;加法，+<br clear="none"/>subtract&nbsp;&nbsp;&nbsp;&nbsp;减法，-<br clear="none"/>multiply&nbsp;&nbsp;&nbsp;&nbsp;乘法，*<br clear="none"/>divide，floor_divide&nbsp;&nbsp;&nbsp;&nbsp;除法和地板除，/ 和 //<br clear="none"/>power&nbsp;&nbsp;&nbsp;&nbsp;乘方，**<br clear="none"/>maximum，fmax&nbsp;&nbsp;&nbsp;&nbsp;元素级最大值，fmax 将忽略 NaN<br clear="none"/>minimum，fmin&nbsp;&nbsp;&nbsp;&nbsp;同上<br clear="none"/>mod&nbsp;&nbsp;&nbsp;&nbsp;取模，%<br clear="none"/>copysign&nbsp;&nbsp;&nbsp;&nbsp;将第二数组元素的符号复制给第一数组<br clear="none"/>greater（_equal），less（_equal），（not_）equal&nbsp;&nbsp;&nbsp;&nbsp;字面意义，返回布尔数组<br clear="none"/>logical_and，logical_or，logical_xor&nbsp;&nbsp;&nbsp;&nbsp;字面意义，返回布尔数组
+</p>
+
+
+
+<p class="Subsection">
+ 三元函数
+</p>
+
+
+
+<p class="Text">
+ where(condition, [x, y])
+</p>
+
+
+
+<p class="Section" id="section2">
+ 
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Numpy笔记" data-title="Numpy笔记" data-url="hypergroups.cn/Numpy笔记/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

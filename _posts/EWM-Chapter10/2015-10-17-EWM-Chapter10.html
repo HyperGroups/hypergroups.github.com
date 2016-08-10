@@ -1,0 +1,274 @@
+---
+layout: post
+category: Books
+title: EWM-Chapter10
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Math-Books.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/EWM-Chapter10/index.html#section1" title="Outline">
+	Outline</a></p>
+
+	<p class="sectionList Subsection"><a href="/EWM-Chapter10/index.html#section2" title="Pre-section">
+	Pre-section</a></p>
+
+	<p class="sectionList Subsection"><a href="/EWM-Chapter10/index.html#section3" title="10.1 Probability spaces">
+	10.1 Probability spaces</a></p>
+
+	<p class="sectionList Subsection"><a href="/EWM-Chapter10/index.html#section4" title="10.6 Probability in physics">
+	10.6 Probability in physics</a></p>
+
+	<p class="sectionList Subsection"><a href="/EWM-Chapter10/index.html#section5" title="10.7 Document">
+	10.7 Document</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ EWM-Chapter10
+</p>
+
+
+
+<p class="Subtitle">
+ @2015-10-17
+</p>
+
+
+
+<p class="Text">
+ PROBABILITY
+</p>
+
+
+
+<p class="Section" id="section1">
+ Outline
+</p>
+
+
+
+<p class="Text">
+ 10.1 Probability spaces. <br clear="none"/>10.2 Stochastic variables. Distribution and independence. Distribution functions. The normal distribution. <br clear="none"/>10.3 Expectation and variance. Expectation values. Characteristic functions. <br clear="none"/>10.4 Sums of stochastic variables, the law of large numbers, and the central limit theorem. <br clear="none"/>10.5 Probability and statistics, sampling. <br clear="none"/>10.6 Probability in physics. <br clear="none"/>10.7 Document. Jacob Bernoulli on the law of large numbers.
+</p>
+
+
+
+<p class="Section" id="section2">
+ Pre-section
+</p>
+
+
+
+<p class="Text">
+ The word probability has to do with <span style="font-weight: bold;">probing</span> the truth. We live in a world full of uncertainties which we try to master by making conjectures about the true state of affairs and about the future. This process is an important part of our analysis of the world around us. It is natural that we should prefer certainty. Normally, situations are classified as absolutely dangerous or absolutely harmless and danger is avoided. We move cautiously on rough ground and, as pedestrians and drivers, keep large margins of security. But this kind of classification involves risks. After two or three similar experiences of the same phenomenon we are inclined to think that&nbsp;&nbsp;it always occurs in the same way.
+</p>
+
+
+
+<p class="Text">
+ Insecurity is both a strain and a challenge. Forced to choose between alternatives whose consequences are not fully known, we may react with a feeling of pleasure and <span style="font-weight: bold;">arousal</span> provided the choice really means something. But the consequence of a wrong choice must not be too serious.<br clear="none"/>Then the situation is critical and we may perhaps have to mobilize all our mental resources, intellectual and emotional, to meet it, and failure may be destructive. The fascination of the unknown is so great that man has invented innumerable games where he can play with it under orderly conditions and without danger to his life.
+</p>
+
+
+
+<p class="Text">
+ Probability theory is a mathematical model of chance. It started as an analysis of games of chance and is now an extensive mathematical theory with applications to the social sciences, biology, physics, and chemistry. We shall give a short review of its foundations with an eye to the law of large numbers and the central limit theorem, and then touch upon some applications.
+</p>
+
+
+
+<p class="Section" id="section3">
+ 10.1 Probability spaces
+</p>
+
+
+
+<p class="Text">
+ In a textbook on the art of computing printed in Italy in 1494, its author Paciuolo says that if 6 plays are needed to win a game and two players interrupt the game when one of them has 5 plays and the other 2, then the sum at stake should be divided between the players <span style="font-weight: bold;">in the proportion 5 to 2</span>. This may seem reasonable, but the principle to share in proportion to the number of plays won is certainly not reasonable. Suppose, for instance,that we change the figures to 15 and 12 plays and that 16 are needed to win. The players would then get almost equal shares---but there is something wrong with this. In fact, he who has 15 plays just needs one more play to get everything while the other one needs 4 in a row. Some years later Cardano treated a similar problem. He understood that it is the remaining plays that have to be analyzed, not the ones already played. In Paciuolo&rsquo;s problem one player needs one play to take everything and the other one needs four. Hence the rest of the game has five possible outcomes. The first player may win in the first, second, third, fourth play or not at all. Cardano wanted the sum at stake to be divided in the proportion <span>$(1 + 2 + 3 + 4) : 1 = 10 : 1$</span>. His motivation for this is obscure. The correct result is 15<em> </em><em>:</em><em> </em><em>1</em> and it follows by applying the principles of probability theory as formulated by Pascal and Fermat 100 years later. Both of them dealt with interrupted games, arriving at the same result but with different methods. Fermat&rsquo;s solution of Paciuolo&rsquo;s problem was to consider all possible outcomes of 4 plays. There are <span>$2 . 2 . 2 . 2 = 16$</span> of them and the first player wins in all cases except one, namely, when all four plays go to his opponent. This kind of reasoning was immediately criticized on the ground that not all outcomes have to be played to the end, for instance, not when the first player wins the first game. This was countered by the argument that nothing changes if all outcomes are played to the end.
+</p>
+
+
+
+<p class="Text">
+ These episodes from the birth of probability theory follow a pattern that was to be repeated many times: a practical question is asked, wrong answers are proposed, a simple mathematical model reduces the answer to a triviality, and the discussion turns to the applicability of the model.
+</p>
+
+
+
+<p class="Text">
+ Fermat did not use the word probability, but he could have defined the probability that the first player wins as 15<em>/</em>16, i.e., the number of favorable cases divided by the number of all possible cases. In this definition it is, of course, assumed that all cases are equally possible. This condition is very often satisfied in combinatorial problems, e.g., favorable and possible deals in games of cards, throws of dice, and drawings from urns. There are simple and also very complicated combinatorial problems of this kind, but in principle they offer no difficulties. They fit beautifully into a universally accepted mathematical model for probability, the probability space, proposed by Kolmogorov in <span style="font-weight: bold;">1933</span>. The simplest probability space is a finite set <em>U</em> equipped with a function <span>$u \to  P(u) \geq  0$</span> such that <span>$\sum P(u) = 1$</span>, where we sum over all <em>u</em> in <em>U</em>. The elements <em>u</em> of <em>U</em> are called elementary events, and <em>P</em> stands for probability. The probability <span>$P(A)$</span> of a subset <em>A</em> of <em>U</em> is defined as <span>$\sum P(u)$</span>, where <em>u</em> <span style="font-weight: bold;">runs over</span> <em>A</em>. The subset <em>A</em> is called an event and should be thought of as the occurence of one of the elementary events of <em>A</em>. The function <em>P</em>, now extended to all subsets of <em>U</em>, has the property that
+</p>
+
+
+
+<p class="DisplayFormula">$$P(A\cup  B) = P(A) + P(B) - P(A \cap  B)\cdots \cdots (1)$$</p><p class="Text">
+ In fact, every <span>$P(u)$</span> with <em>u</em> in&nbsp;&nbsp;<em>A</em><em> </em><em>&cap;</em><em> </em><em>B</em> appears precisely once in both <span>$P(A)$</span> and <span>$P (B)$</span>. The empty set <em>0</em> is supposed to have probability <em>0</em>. We have supposed that <em>U</em> is finite, but there is nothing that prevents <em>U</em> from being infinite provided <span>$P(u) > 0$</span> for at most countably many <em>u</em>.
+</p>
+
+
+
+<p class="Text">
+ A function <span>$P (A) \text{ $>$=} 0$</span> from subsets of a set <em>U</em> with the property (1) is called a measure and, if <span>$P( U) = 1$</span>, a probability measure. The general definition of a probability space is now simply a set <em>U</em> equipped with a probability measure <em>P</em>. In this definition, the elementary events have disappeared and it may happen that <span>$P(u) = 0$</span> for all <em>u</em> in <em>U</em>. An example of this is <em>U</em><em> </em><em>=</em><em> </em><em>R</em> equipped with the measure
+</p>
+
+
+
+<p class="DisplayFormula">$$P(A) = \int _Af(x) \text{ dx}$$</p><p class="Text">
+ where <span>$f(x)\geq 0$</span> is such that <span>$P(R) = 1$</span>. With this we have <span style="font-weight: bold;">slid</span> into integration theory where, unfortunately, not all functions <em>f</em> and sets <em>A</em> are permitted to appear. We really ought to have added some technical reservations to our definition of a probability space. But we did not since we trust the reader to stand for some <span style="font-weight: bold;">fogginess</span> at this point.
+</p>
+
+
+
+<p class="Text">
+ Most games of chance and many other things can be thought of as probability spaces:<br clear="none"/>Throws with a coin. <em>U</em> has two elements, heads and tails, each with the probability <em>1</em><em>/</em><em>2</em>.<br clear="none"/>Throws with a die. <em>U</em> has six elements <em>1</em><em>,</em><em> </em><em>2</em><em>,</em><em> </em><em>3</em><em>,</em><em> </em><em>4</em><em>,</em><em> </em><em>5</em><em>,</em><em> </em><em>6</em> each with the probability <em>1</em><em>/</em><em>6</em>.<br clear="none"/>Win or lose. <em>U</em> has two elements, gain and loss, with probabilities <em>p</em> and <em>q</em>, <span>$p + q = 1$</span>.
+</p>
+
+
+
+<p class="Text">
+ <span style="font-weight: bold;">Roulette</span>. <em>U</em> has <em>n</em> elements <span>$F_1,\cdots  , F_n$</span> with the probabilities <span>$P_1,\cdots , P_n$</span>. We may think of <span>$F_1,\cdots  , F_n$</span> as sectors of a circular spinning disk, a roulette wheel, the area of <span>$F_k$</span> being <em>h</em> times the area of the disk.
+</p>
+
+
+
+<p class="Text">
+ <span style="font-weight: bold;">Bernoulli sequences</span>. Playing win or lose n times, we get a probability space <em>U</em> consisting of <span>$2^n$</span> sequences <span>$u = \left(u_1,\cdots  , u_n\right)$</span>, where each <span>$u_k$</span> is either a gain or a loss and <span>$P (u) = p^rq^s$</span> where <em>r</em> is the number of gains and <span>$s = n - r$</span> the number of losses of the sequence <em>u</em>. Note that the <em>P</em><em>(</em><em>u</em><em>)</em> are the <span>$2^n$</span> terms of the product <span>$(p + q)^n$</span> when written as a sum. It follows that, for all <em>k</em>, <span>$P \left(u_k = \text{ gain}\right) = p$</span> where the right side is the probability of the subset of <em>U</em> consisting of all u such that <span>$u_k=\text{ gain}$</span> . We also get <span>$P\left(u_k = \text{ loss}\right)= q = 1 - p$</span>. Here the number <em>n</em> has disappeared and one can show that these equalities also define a probability measure on the set of infinite sequences <span>$u = \left(u_1,u_2,\cdots  \right)$</span> of gains and losses. The objects which we have now introduced are called Bernoulli sequences, after Jacob Bernoulli, who studied them in a book, Ars Conjectandi (1713).
+</p>
+
+
+
+<p class="Text">
+ <span style="font-weight: bold;">Weather</span>. <em>U</em> has two elements, beautiful and foul, with the probabilities 0.1 and 0.9.
+</p>
+
+
+
+<p class="Text">
+ <span style="font-weight: bold;">Lotteries</span>. <em>U</em> consists of all possible drawings of <em>n</em> tickets from<span>$N > n$</span> numbered ones, all with the same probability. If the order between the <em>n</em> tickets counts, this probability is <span>$(N - n)!/N!$</span> for then <em>U</em> has <span>$N!/(N - n)!$</span> elements. If the order does not count, <em>U</em> has <span>$\left(\begin{array}{c} N \\ n \\\end{array}\right) = N!/(N - n)!n!$</span> elements, and the probability is <em>1</em> divided by this number.
+</p>
+
+
+
+<p class="Text">
+ <span style="font-weight: bold;">Races</span>. <em>U</em> consists of the outcomes of 10 horse races with one winning horse out of 5 in each race. Every outcome has the same probability, <span>$5^{-10}$</span>.
+</p>
+
+
+
+<p class="Text">
+ Most of these examples are firmly anchored in the real world. Casinos and lotteries are stable enterprises built on reliable probability spaces. But the example with the weather is almost meaningless, and anyone betting on horse races according to the model above will go broke in no time.
+</p>
+
+
+
+<p class="Text">
+ The concept of a probability space is a radical axiomatization of our intuitive idea of probabilities. Finite probability spaces may seem unduly trivial from a purely mathematical point of view. But they become <span style="font-weight: bold;">marvelous</span> toys once we introduce stochastic variables and their expectation values.
+</p>
+
+
+
+<p class="Section" id="section4">
+ 10.6 Probability in physics
+</p>
+
+
+
+<p class="Text">
+ In the eighteenth century, Euler and Lagrange invented a simple model for the movements of fluids and gases. It combines Newtonian mechanics with simple properties of pressure and density, and it has been very successful. Somewhat later Fourier made a model of heat flow based on the fact that it is proportional to the temperature gradient. In these models the medium---a gas, a fluid, or a heat conductor---is considered to be homogeneous and its equilibrium states are simple to describe. A fluid or a gas not influenced by outer forces is in equilibrium when pressure and density are constant, and there is no heat flow when the temperature is constant. But through the progress of chemistry in the beginning of the nineteenth century it became clear that gases, fluids, and solids consist of more or less free-moving molecules and that heat is a form of mechanical energy. The movements of molecules follow the laws of Newton but it is hopeless to keep track of them one by one. On the other hand, it is possible to study them statistically, for instance, the distribution of energy at various states of equilibrium and how this distribution may change with time. This is done in statistical mechanics, founded by Clausius, Maxwell, and Boltzmann. Combining the laws of Newton with various versions of the law of large numbers, they succeeded in deducing some known macroscopic laws, for instance Boyle'S Law about the connection between pressure, temperature, and density of a gas and the laws of heat conduction. Statistical mechanics also has a branch in quantum mechanics which we cannot go into.<br clear="none"/>As an example of probability in physics we shall now describe a probability space with applications to heat conduction and Brownian motion, the motion of small particles in a fluid caused by impacts from the molecules of the fluid. This probability space consists of all continuous curves <span>$t\to \xi (t)=\left(\xi _1(t),\xi _2(t),\xi _3(t)\right)$</span> in three-dimensional space. Here <em>t</em><em>&ge;</em><em>0</em> is time and we suppose that <span>$\xi (0)=0$</span>. These curves correspond to all possible movements of a particle starting from the origin at time 0. The probability measure is such that the stochastic variables <span>$\xi \to \xi _j\left(t_2\right)-\xi _j\left(t_1\right)$</span> where<span>$j=1,2,3$</span> are independent and normally distributed with means 0 and variances <span>$c^2\left(t_2-t_1\right)^2$</span> where <em>c</em><em> </em><em>></em><em> </em><em>0</em> is a constant. Hence the frequency function of <span>$\xi (t) = \xi (t) - \xi (0)$</span> is <span>$f(t, x) = (2\pi  c t) ^{-3/2} e^{-\left|x|^2/2c t\right.}$</span> where <span>$\left|x|^2\right. =x_1^2+x_2^2+x_3^2$</span> and we can interpret <em>c</em> as the velocity of the movement in every direction. Putting <span>$d x = d x_1d x_2d x_3$</span>, the number <span>$P (\xi (t)) \in  A) = \int _Af(t, x) d x$</span> is the probability that our stochastic particle shall be in the region <em>A</em> at time <em>t</em>. In the classical macromodel of heat conduction, <span>$f(t, x)$</span> is the temperature at time <em>t</em> and at the point <em>x</em> of a three-dimensional heat conductor with the heat conduction coefficient <em>c</em> into which, at time <em>t</em><em> </em><em>=</em><em> </em><em>0</em> and at <em>x</em><em> </em><em>=</em><em> </em><em>0</em>, one unit of heat was introduced. We can also connect our stochastic variable with potential theory, for it is not difficult to verify that <span>$\int _0^{\infty }d t\int _A f(t, x) d x= (2\pi  c)^{-1}\int _A|x|^{-1}- d x$</span>.<br clear="none"/>Here the left side is the time which, on an average, the particle spends in <em>A</em> and the right side is the Newtonian potential at the origin of a uniform mass distribution on <em>A</em>. This kind of a connection has sometimes been used to guess and prove results in potential theory.
+</p>
+
+
+
+<p class="Text">
+ Finally, there is a loose connection between our probability space and quantum mechanics that tickles the imagination. The frequency function <span>$f(t, x)$</span> is a solution of the equation of heat conduction, <span>$2\partial _tf(t, x) = c\left(\partial _1^2f (t, x) + \partial _2^2f(t, x) + \partial _3^2f(t, x)\right)$</span> where <span>$\partial _t,\partial _1,\partial _2,\partial _3$</span> are the partial derivatives with respect to <span>$t, x_1,x_2,x_3$</span> Changing <em>t</em> to it in the equation of heat conduction, we get one of the basic items of quantum mechanics, the Schrodinger equation. At the same time, the frequency function <span>$f(t, x)$</span> turns into the complex function <span>$(2\pi  c t) ^{-3/2} e^{-\left|x|^2/2i c t\right.} ,(t>0)$</span>. In this way our probability space of curves gets a complex measure which we can try to use to construct integrals. These so-called history integrals were invented by Feynman around 1950. So far they are not a bona fide mathematical tool, but they have played a considerable part in the intuitive arguments that are an indispensable part of quantum mechanics.
+</p>
+
+
+
+<p class="Section" id="section5">
+ 10.7 Document
+</p>
+
+
+
+<p class="Text">
+ <span style="font-weight: bold;">Jacob Bernoulli on the law of large numbers</span><br clear="none"/>In his book Ars Conjectandi (1713), Jacob Bernoulli notes that probabilities are known a priori in games of dice or drawings from urns, but goes on to say:&ldquo;But, I ask you, who among mortals will ever be able to define as so many cases, the number, e.g. , of the diseases which invade innumerable parts of the human body at any age and can cause our death? And who can say how much more easily one disease than another---plague than <span style="font-weight: bold;">dropsy</span>, dropsy than fever---can kill a man, to enable us to make conjectures as to what will be the future state of life or death? Who, again, can <span style="font-weight: bold;">register</span> the innumerable cases of changes to which the air is subject daily, to derive <span style="font-weight: bold;">therefrom</span> conjectures as to what will be its state after a month or even after a year? Again, who has sufficient knowledge of the nature of the human mind or of the admirable structure of the body to be able, in games depending on acuteness of mind or agility of body, to enumerate cases in which one or another of the Jacob Bernoulli 1654-1705 participants will win? Since such and similar things depend upon completely hidden causes, which, besides, by reason of the innumerable variety of combinations will forever escape our efforts to detect them, it would <span style="font-weight: bold;">plainly</span> be an insane attempt to get any knowledge in this fashion .&rdquo;
+</p>
+
+
+
+<p class="Text">
+ Noting that unknown probabilities can be determined by repeated experiments and that many <span style="font-weight: bold;">repetitions</span> seem to increase the precision, he continues as follows, announcing the law of large numbers and advocating the use of statistics in medicine and <span style="font-weight: bold;">meteorology</span>.
+</p>
+
+
+
+<p class="Text">
+ &nbsp;&nbsp;&nbsp;&nbsp;"Although this is naturally known to anyone, the proof based on scientific principles is by no means trivial, and it is our duty to explain it.<br clear="none"/>However, I would consider it a small achievement if I could only prove what everybody knows anyway. There remains something else to be considered, which perhaps nobody has thought of. Namely, it remains to <span style="font-weight: bold;">inquire</span>, whether by thus augmenting the number of experiments the probability of getting a genuine ratio between numbers of cases, in which some event may occur or fail, also augments itself in such a manner as finally to surpass any given degree of certitude; or whether the problem, so to speak, has its own asymptote; that is, there exists a degree of certitude which never can be surpassed no matter how the observations are multiplied; for instance that it never is possible to have a probability greater than 1/2, 2/3 or 3/4 that the real ratio has been attained. To illustrate this by an example, suppose that, without your knowledge, 3000 white stones and 2000 black stones are concealed in a certain urn, and you try to discover their numbers by drawing one stone after another (each time putting back the stone drawn before taking the next one, in order to change the number of stones in the urn) and notice how often a white or black stone appears. The question is, can you make so many drawings as to make it 10 or 100 or 1000 etc. times more probable (that is, morally certain) that the ratio of the frequencies of the white and black stones will be 3 to 2, as is the case with the number of stones in the urn, than any ratio different from that? If this were not true, I confess nothing would be left of our attempt to explore the number of cases by experiments. But if this can be attained and moral certitude can finally be acquired (how that can be done I shall show in the next chapter) we shall have cases enumerated a posteriori with almost the same confidence as if<br clear="none"/>they were known a priori. And that, for practical purposes, where &ldquo;morally certain&rdquo; is taken for &ldquo;absolutely certain&rdquo; by Axiom 9, Chap. II. is abundantly sufficient to direct our conjecture in any contingent matter not less scientifically than in games of chance.<br clear="none"/>&nbsp;&nbsp;&nbsp;&nbsp;For if instead of an urn we take air or the human body, that contain in themselves sources of various changes or diseases as the urn contains stones, we shall be able in the same manner to determine by observations how much likely one event is to happen than another in these subjects.&rdquo;
+</p>
+
+
+
+<p class="Text">
+ <span style="font-weight: bold;">Literature</span><br clear="none"/>There is an overflow: of textbooks on probability and statistics. Willy Feller&rsquo;s An Introduction to Probability and Its Applications (Wiley, 1968) faces mathematics squarely, is well written, and contains a lot of material.
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="EWM-Chapter10" data-title="EWM-Chapter10" data-url="hypergroups.cn/EWM-Chapter10/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,214 @@
+---
+layout: post
+category: Computer
+title: VIM笔记
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/VIM笔记/index.html#section1" title="命令模式">
+	命令模式</a></p>
+
+	<p class="sectionList Subsection"><a href="/VIM笔记/index.html#section2" title="用vi命令打开文件时,如何直接跳到最后一行?">
+	用vi命令打开文件时,如何直接跳到最后一行?</a></p>
+
+	<p class="sectionList Subsection"><a href="/VIM笔记/index.html#section3" title="编辑模式">
+	编辑模式</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ VIM笔记
+</p>
+
+
+
+<p class="Chapter">
+ @2015-8-30
+</p>
+
+
+
+<p class="Subsection">
+ 撤销
+</p>
+
+
+
+<p class="Text">
+ u
+</p>
+
+
+
+<p class="Text">
+ Ctrl+R
+</p>
+
+
+
+<p class="Section" id="section1">
+ 命令模式
+</p>
+
+
+
+<p class="Subsection">
+ 查找某字符串
+</p>
+
+
+
+<p class="Text">
+ /string
+</p>
+
+
+
+<p class="Text">
+ ?string
+</p>
+
+
+
+<p class="Text">
+ n继续查找
+</p>
+
+
+
+<p class="Text">
+ N反向查找
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="http://blog.csdn.net/hitustc/article/details/5585101"><span class="HyperlinkInline">ref</span></a></span>
+</p>
+
+
+
+<p class="Subsection">
+ 光标移动
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="http://blog.csdn.net/bruce0532/article/details/8312933"><span class="HyperlinkInline">ref1</span></a></span>
+</p>
+
+
+
+<p class="Subsection">
+ 内容删除
+</p>
+
+
+
+<p class="Subsection">
+ 删除一行dd<br clear="none"/>删除n行ndd<br clear="none"/>dG是删除当前后面的全部内容<br clear="none"/>x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;删除当前光标下的字符<br clear="none"/>dw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;删除光标之后的单词剩余部分。<br clear="none"/>d$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;删除光标之后的该行剩余部分。
+</p>
+
+
+
+<p class="Subsection">
+ c 
+</p>
+
+
+
+<p class="Text">
+ 功能和d相同，区别在于完成删除操作后进入INSERT MODE<br clear="none"/>cc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;也是删除当前行，然后进入INSERT MODE
+</p>
+
+
+
+<p class="Subsection">
+ 跳转到第n行
+</p>
+
+
+
+<p class="Text">
+ 在编辑模式下输入<br clear="none"/><br clear="none"/>ngg 或者 nG<br clear="none"/><br clear="none"/>n为指定的行数(如25)<br clear="none"/><br clear="none"/>25gg或者25G 跳转到第25行.<br clear="none"/><br clear="none"/>在命令模式下输入行号n<br clear="none"/><br clear="none"/>: n
+</p>
+
+
+
+<p class="Section" id="section2">
+ 用vi命令打开文件时,如何直接跳到最后一行?
+</p>
+
+
+
+<p class="Subsection">
+ 1.跳到文本的最后一行：按&ldquo;G&rdquo;,即&ldquo;shift+g&rdquo;<br clear="none"/><br clear="none"/>2.跳到最后一行的最后一个字符 ： 先重复1的操作即按&ldquo;G&rdquo;，之后按&ldquo;$&rdquo;键，即&ldquo;shift+4&rdquo;。<br clear="none"/><br clear="none"/>3.跳到第一行的第一个字符：先按两次&ldquo;g&rdquo;，<br clear="none"/><br clear="none"/>4.跳转到当前行的第一个字符：在当前行按&ldquo;0&rdquo;。<br clear="none"/><br clear="none"/>5.vi加密。进入vi，输入&rdquo;:&rdquo;&nbsp;&nbsp;+ &ldquo;X&rdquo; 之后就提示你输入两次密码。<br clear="none"/><br clear="none"/>6.文件重新载入 :e!<br clear="none"/><br clear="none"/>7.单行复制&nbsp;&nbsp;将光标移到复制行 按 &lsquo;yy&rsquo;进行复制<br clear="none"/><br clear="none"/>8.多行复制&nbsp;&nbsp;将光标移到复制首行 按 &lsquo;nyy&rsquo;进行复制 n=1.2.3.4。。。。。<br clear="none"/><br clear="none"/>9.粘贴 将光标移到粘贴行 按 &lsquo;p&rsquo;进行粘贴<br clear="none"/><br clear="none"/>10.查找 /pattern Enter <br clear="none"/>
+</p>
+
+
+
+<p class="Section" id="section3">
+ 编辑模式
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="VIM笔记" data-title="VIM笔记" data-url="hypergroups.cn/VIM笔记/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

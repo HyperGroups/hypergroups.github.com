@@ -1,0 +1,274 @@
+---
+layout: post
+category: Computer
+title: GitHub笔记
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/GitHub笔记/index.html#section1" title="SSH">
+	SSH</a></p>
+
+	<p class="sectionList Subsection"><a href="/GitHub笔记/index.html#section2" title="Basic">
+	Basic</a></p>
+
+	<p class="sectionList Subsection"><a href="/GitHub笔记/index.html#section3" title="Refs">
+	Refs</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ GitHub笔记
+</p>
+
+
+
+<p class="Chapter">
+ @2015-9-24
+</p>
+
+
+
+<p class="Section" id="section1">
+ SSH
+</p>
+
+
+
+<p class="Subsection">
+ 命令行
+</p>
+
+
+
+<p class="Text">
+ ssh-keygen
+</p>
+
+
+
+<p class="Text">
+ vim ~/.ssh/id_rsa.pub
+</p>
+
+
+
+<p class="Text">
+ 复制ssh内容到GitHub，然后就可以GitClone
+</p>
+
+
+
+<p class="Text">
+ git clone git@111.11.100.11:name/Project.git
+</p>
+
+
+
+<p class="Section" id="section2">
+ Basic
+</p>
+
+
+
+<p class="Text">
+ git clone
+</p>
+
+
+
+<p class="Text">
+ git checkout
+</p>
+
+
+
+<p class="Text">
+ git pull
+</p>
+
+
+
+<p class="Text">
+ git add
+</p>
+
+
+
+<p class="Text">
+ git commit -m &ldquo;something&rdquo;
+</p>
+
+
+
+<p class="Text">
+ git commit -m&ldquo;&rdquo;1
+</p>
+
+
+
+<p class="Text">
+ 这几个的组合可以完成一些基础的事情了，如果遇到多人协作，多次提交及提交冲突的情况，就要多学习其他的几个命令
+</p>
+
+
+
+<p class="Text">
+ git rebase
+</p>
+
+
+
+<p class="Text">
+ git revert
+</p>
+
+
+
+<p class="Text">
+ git merge
+</p>
+
+
+
+<p class="Text">
+ 等，然后在一个人的项目中自己在多台机器上的操作时，遇到冲突问题的一个简单的临时解决方案是，把一个git本地仓库删除再clone，以一台电脑上的为准。
+</p>
+
+
+
+<p class="Text">
+ git status
+</p>
+
+
+
+<p class="Text">
+ git diff
+</p>
+
+
+
+<p class="Text">
+ 比如要把dev分支上的所有东东合并到master分支：<br clear="none"/>首先先到master分支：git checkout master<br clear="none"/>然后把dev给合并过来：git merge dev
+</p>
+
+
+
+<p class="Text">
+ 也可以网页操作或使用Windows GitHub客户端操作
+</p>
+
+
+
+<p class="Subsection">
+ 创建分支dev
+</p>
+
+
+
+<p class="Text">
+ git branch dev
+</p>
+
+
+
+<p class="Text">
+ 在本地初次创建时要先提交一次，否则会有报错，原因是因为如果master分支为空的话，。
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/GitHub笔记/HTMLFiles/GitHub笔记_1.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/GitHub笔记/HTMLFiles/GitHub笔记_1.png" alt="GitHub笔记_1.png" width="412" height="42" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ git push origin dev
+</p>
+
+
+
+<p class="Section" id="section3">
+ Refs
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="http://blog.csdn.net/lincyang/article/details/45269491"><span class="HyperlinkInline">ref1</span></a></span>
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="https://github.com/"><span class="HyperlinkInline">GitHub</span></a></span>
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="http://git-scm.com/download/"><span class="HyperlinkInline">Git</span></a></span>
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="GitHub笔记" data-title="GitHub笔记" data-url="hypergroups.cn/GitHub笔记/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

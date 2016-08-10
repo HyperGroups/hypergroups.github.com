@@ -1,0 +1,268 @@
+---
+layout: post
+category: Computer
+title: Jekyll笔记
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/Jekyll笔记/index.html#section1" title="GitHub官方Jekyll的版本">
+	GitHub官方Jekyll的版本</a></p>
+
+	<p class="sectionList Subsection"><a href="/Jekyll笔记/index.html#section2" title="Jekyll-1.4.3的一个中文解码问题">
+	Jekyll-1.4.3的一个中文解码问题</a></p>
+
+	<p class="sectionList Subsection"><a href="/Jekyll笔记/index.html#section3" title="重装记录">
+	重装记录</a></p>
+
+	<p class="sectionList Subsection"><a href="/Jekyll笔记/index.html#section4" title="一些问题">
+	一些问题</a></p>
+
+	<p class="sectionList Subsection"><a href="/Jekyll笔记/index.html#section5" title="Refs">
+	Refs</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ Jekyll笔记
+</p>
+
+
+
+<p class="Subtitle">
+ @2015-08-30
+</p>
+
+
+
+<p class="Section" id="section1">
+ GitHub官方Jekyll的版本
+</p>
+
+
+
+<p class="Text">
+ ...
+</p>
+
+
+
+<p class="Section" id="section2">
+ Jekyll-1.4.3的一个中文解码问题
+</p>
+
+
+
+<p class="Text">
+ 重装系统后，直接gem install jekyll升级到了新版，同时遇到中文解码的老问题。<br clear="none"/>报错&rdquo;invalid byte sequence in GBK&rdquo;<br clear="none"/>Jekyll-1.3.0安装后
+</p>
+
+
+
+<p class="Subsection">
+ 1.3.0版本之前的一个解决方法
+</p>
+
+
+
+<p class="Text">
+ 添加解码指定选项
+</p>
+
+
+
+<p class="Text">
+ E:\\Ruby200-x64\\lib\<br clear="none"/>uby\\gems\\2.0.0\\gems\\jekyll-1.3.0\\lib\\jekyll\\convertible.rb
+</p>
+
+
+
+<p class="Text">
+ def read_yaml (base, name, opts = {: encoding = >"utf - 8"})
+</p>
+
+
+
+<p class="Text">
+ 将
+</p>
+
+
+
+<p class="Text">
+ self.content = File.read(File.join(base, name))
+</p>
+
+
+
+<p class="Text">
+ 改为
+</p>
+
+
+
+<p class="Text">
+ self.content = File.read(File.join(base, name), :encoding => &ldquo;utf-8&rdquo;)
+</p>
+
+
+
+<p class="Subsection">
+ 降级安装
+</p>
+
+
+
+<p class="Text">
+ 删除Jekyll-1.4.3，安装Jekyll-1.3.0
+</p>
+
+
+
+<p class="Text">
+ gem uninstall jekyll<br clear="none"/>gem install jekyll --version "=1.3.0"
+</p>
+
+
+
+<p class="Section" id="section3">
+ 重装记录
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="http://hivan.me/octopress-install-to-windows8/"><span class="HyperlinkInline">cited</span></a></span>
+</p>
+
+
+
+<p class="Subsection">
+ 装好Ruby后还要cd到DevKit目录弄一下
+</p>
+
+
+
+<p class="Text">
+ 重装系统后，ruby的安装文件等都在E盘时，设置了一下环境变量后，可能会忘了这回事。
+</p>
+
+
+
+<p class="Text">
+ cd c: \Devkit #你自己的Devkit目录<br clear="none"/>ruby dk.rb init #用来产生config.yaml, 里边会有你的ruby路径, 一般会帮你设定好!<br clear="none"/>ruby dk.rb install
+</p>
+
+
+
+<p class="Text">
+ 之后,我们需要更新一下gem,也是为了保险起见(在CMD中)!
+</p>
+
+
+
+<p class="Text">
+ gem sources - l&nbsp;&nbsp;#查看源地址<br clear="none"/>gem sources - a http://ruby.taobao.org/ #添加淘宝的ruby源地址<br clear="none"/>gem sources -- remove https://rubygems.org/ #删除rubygems源<br clear="none"/>gem sources - l #再查看一下源地址, 确保只有http://ruby.taobao.org/一个源<br clear="none"/>gem update -- system<br clear="none"/>gem update<br clear="none"/>gem install rdoc bundler<br clear="none"/>gem install jekyll
+</p>
+
+
+
+<p class="Text">
+ Finished
+</p>
+
+
+
+<p class="Section" id="section4">
+ 一些问题
+</p>
+
+
+
+<p class="Subsection">
+ Title转小写的问题
+</p>
+
+
+
+<p class="Text">
+ 默认不设置Title: YourTitle时，Title会自动从文件名中获得，变量的方式是{{post.title}}会把驼峰式的命名变成首字母大写的，比如HelloWorld会变成Helloworld，这样就不好看了，因此解决方法就是设置一下Title变量。
+</p>
+
+
+
+<p class="Text">
+ 注意colon后的半个空格，虽然简单，我却有几次没意识到这个问题，导致没有编译。
+</p>
+
+
+
+<p class="Section" id="section5">
+ Refs
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="http://hypergroups.cn/WelcomeBackToJekyll/"><span class="HyperlinkInline">Welcome Back to Jekyll</span></a></span>
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Jekyll笔记" data-title="Jekyll笔记" data-url="hypergroups.cn/Jekyll笔记/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

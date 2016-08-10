@@ -1,0 +1,984 @@
+---
+layout: post
+category: Mathematica
+title: 函数选项的一个问题
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/函数选项的一个问题/index.html#section1" title="DownValue形式的函数选项不起作用的问题">
+	DownValue形式的函数选项不起作用的问题</a></p>
+
+	<p class="sectionList Subsection"><a href="/函数选项的一个问题/index.html#section2" title="Solution1">
+	Solution1</a></p>
+
+	<p class="sectionList Subsection"><a href="/函数选项的一个问题/index.html#section3" title="DownValues-UpValues">
+	DownValues-UpValues</a></p>
+
+	<p class="sectionList Subsection"><a href="/函数选项的一个问题/index.html#section4" title="回到原问题">
+	回到原问题</a></p>
+
+	<p class="sectionList Subsection"><a href="/函数选项的一个问题/index.html#section5" title="总结">
+	总结</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ 函数选项的一个问题
+</p>
+
+
+
+<p class="Chapter">
+ @2015-8-21
+</p>
+
+
+
+<p class="Section" id="section1">
+ DownValue形式的函数选项不起作用的问题
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[1]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Options[f] = {a -> a0};
+f[_][x_, OptionsPattern[f(*{a->a0,b->b0}*)]] := {x, 
+  v = OptionValue[f, a]}</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_1.gif" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_1.gif" alt="函数选项的一个问题_1.gif" width="575" height="37" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[2]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>f[d][7]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_2.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_2.png" alt="函数选项的一个问题_2.png" width="57" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_3.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_3.png" alt="函数选项的一个问题_3.png" width="53" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 看似选项a有了一个值，但是，换一个选项值就不灵喽
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[3]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>f[d][7, a -> a1]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_4.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_4.png" alt="函数选项的一个问题_4.png" width="111" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_5.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_5.png" alt="函数选项的一个问题_5.png" width="53" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 那么问题来了，如何让结果变成{7,a1}呢？
+</p>
+
+
+
+<p class="Text">
+ 当然原因是我们不能这样定义选项
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[4]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Options[f[d]] = {a -> a0};</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_6.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_6.png" alt="函数选项的一个问题_6.png" width="186" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Subsection">
+ 目的
+</p>
+
+
+
+<p class="Text">
+ 我的目的是在写一些相似的函数时，及具有多种变换时，管理起函数名来，更方便。<br clear="none"/>简单地说，我们使用了f1,f2,f3定义了10个函数，其实可以重载为一个f及多种选项的组合，这样我们有一个f，可以解决10种情形，而当我们有100种情形时，我们有10个函数，而这10个函数又是相似的，因此统一命名在开发中，进行查找，替换，编程操作函数的格式化[元编程]等都会极其方便。
+</p>
+
+
+
+<p class="Text">
+ 通常的Writing节奏，ForExample@Me，都是写一两个函数看看，解决一些问题，看看有没有各种坑，了解了一些坑后，再优化。
+</p>
+
+
+
+<p class="Text">
+ 遇到新的相似问题了，先Copy一个模板代码到一些Section，然后修改修改，要是有10个Section，然后发现要修改一些共通的部分，就只好修改十次，这个时间如果时间允许，就可以进行优化。
+</p>
+
+
+
+<p class="Text">
+ 使用DownValue的一个问题自然是把函数名和变量名统一管理起来。
+</p>
+
+
+
+<p class="Section" id="section2">
+ Solution1
+</p>
+
+
+
+<p class="Text">
+ 这种方式其实只不过是套装了一个通常的f而已
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[5]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Options[d] = {a -> a0};
+f[d[x_, OptionsPattern[]]] := f@{x, OptionValue[d, a]}</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_7.gif" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_7.gif" alt="函数选项的一个问题_7.gif" width="425" height="37" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[6]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>f[d[5, a -> 2]]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_8.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_8.png" alt="函数选项的一个问题_8.png" width="103" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_9.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_9.png" alt="函数选项的一个问题_9.png" width="69" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[7]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>DownValues@f</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_10.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_10.png" alt="函数选项的一个问题_10.png" width="100" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_11.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_11.png" alt="函数选项的一个问题_11.png" width="537" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[8]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>UpValues@d</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_12.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_12.png" alt="函数选项的一个问题_12.png" width="85" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_13.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_13.png" alt="函数选项的一个问题_13.png" width="16" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 注意到，d这里是没有上值的
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[9]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Clear@f
+Options[d] = {a -> a0};
+f[d[x_, OptionsPattern[]]] ^:= f@{x, OptionValue[d, a]}
+DownValues@f</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_14.gif" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_14.gif" alt="函数选项的一个问题_14.gif" width="433" height="77" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_15.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_15.png" alt="函数选项的一个问题_15.png" width="16" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 注意到，这里f是没有下值的
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[10]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>f[g[x_, OptionsPattern[]]] ^:= f@{x, OptionValue[d, a]}</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_16.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_16.png" alt="函数选项的一个问题_16.png" width="433" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[11]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>f[g[5, a -> 2]]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_17.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_17.png" alt="函数选项的一个问题_17.png" width="103" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_18.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_18.png" alt="函数选项的一个问题_18.png" width="77" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[12]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Options[g] = {a -> a0};</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_19.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_19.png" alt="函数选项的一个问题_19.png" width="162" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[13]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>f[g[x_, OptionsPattern[]]] ^:= f@{x, OptionValue[g, a]}</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_20.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_20.png" alt="函数选项的一个问题_20.png" width="433" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[14]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>f[g[5, a -> 2]]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_21.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_21.png" alt="函数选项的一个问题_21.png" width="103" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_22.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_22.png" alt="函数选项的一个问题_22.png" width="69" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[15]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>UpValues@g</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_23.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_23.png" alt="函数选项的一个问题_23.png" width="85" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_24.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_24.png" alt="函数选项的一个问题_24.png" width="681" height="37" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 为何要整得这么麻烦？假设我们有10个函数，f1,f2,f3,f4作为外层的函数，又有g1,g2作为内层的函数，那么f系列函数与g系列的函数结合起来就有许多函数了。比如h1=f1[g1],h2=f2[g1],h3=f1[g1],h4=f2[g4]，当我们修改g1时，h1/h2/h3都能得到修改，而不用修改三次。
+</p>
+
+
+
+<p class="Text">
+ 其实在这个Section中，当我们折腾上下值的时候，稍有一点函数式作为一等公民的意味，函数作为参数。
+</p>
+
+
+
+<p class="Section" id="section3">
+ DownValues-UpValues
+</p>
+
+
+
+<p class="Text">
+ 无非是通过一些基础变量名去查找一些规则，这些规则应用了复合的变量名
+</p>
+
+
+
+<p class="Subsection">
+ TagSet
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[16]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>chf /: rate[chf] = 0.812;
+eur /: rate[eur] = 1.317;
+gbp /: rate[gbp] = 1.963;</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_25.gif" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_25.gif" alt="函数选项的一个问题_25.gif" width="184" height="57" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Text">
+ 我们看到使用TagSet是rate没有下值的，我们看到chf变黑了，它有了一个上值
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[17]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>DownValues@rate</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_26.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_26.png" alt="函数选项的一个问题_26.png" width="124" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_27.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_27.png" alt="函数选项的一个问题_27.png" width="16" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[18]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>UpValues@chf</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_28.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_28.png" alt="函数选项的一个问题_28.png" width="100" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_29.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_29.png" alt="函数选项的一个问题_29.png" width="250" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[19]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>rat[chf] = 0.8; rat[eur] = 0.5;</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_30.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_30.png" alt="函数选项的一个问题_30.png" width="228" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Text">
+ 这种方式定义变量时，rate就有了下值，而这就是帮助里说的<br clear="none"/>For downvalues, the tag is redundant:<br clear="none"/>这种方式是我用得较多的，同时还有一个问题待解决，标记一下[汲及到程序包的上下文的一个问题]。
+</p>
+
+
+
+<p class="Subsection">
+ UpSet
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[20]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>area[square] ^= s^2; area[cubic] ^= s^3;</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_31.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_31.png" alt="函数选项的一个问题_31.png" width="308" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[21]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>DownValues[square]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_32.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_32.png" alt="函数选项的一个问题_32.png" width="144" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_33.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_33.png" alt="函数选项的一个问题_33.png" width="16" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[22]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>UpValues[square]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_34.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_34.png" alt="函数选项的一个问题_34.png" width="128" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_35.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_35.png" alt="函数选项的一个问题_35.png" width="248" height="18" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Subsection">
+ 总结
+</p>
+
+
+
+<p class="Text">
+ 如果你想一个符号有下值，就用TagSet或Set，否则就用UpSet
+</p>
+
+
+
+<p class="Section" id="section4">
+ 回到原问题
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[23]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>f[g] ^:= fg;
+Options[fg] = {a -> a0};
+fg[x_, OptionsPattern[]] = {x, OptionValue[fg, a]}</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_36.gif" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_36.gif" alt="函数选项的一个问题_36.gif" width="386" height="57" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_37.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_37.png" alt="函数选项的一个问题_37.png" width="53" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[24]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>f[g][x, a -> 2]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_38.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_38.png" alt="函数选项的一个问题_38.png" width="103" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_39.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_39.png" alt="函数选项的一个问题_39.png" width="53" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 其实并没有解决我原来的最初的问题，我当时遇到问题时，是使用查找替换功能将f[g]替换成了f1，而f1能正常使用，如果用这个Section的方式，则后续使用f[g]再跟f1关联起来，另一种方式是
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[25]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Options[f1] = {a -> a1}
+f1[g1][x_, OptionsPattern[]] := {x, OptionValue[f1, a]}</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_40.gif" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_40.gif" alt="函数选项的一个问题_40.gif" width="427" height="37" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_41.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_41.png" alt="函数选项的一个问题_41.png" width="57" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[26]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Options[f1g1] = {a -> a1}
+g1 /: f1[g1] := f1g1
+f1g1[x_, OptionsPattern[]] := {x, OptionValue[f1g1, a]}</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_42.gif" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_42.gif" alt="函数选项的一个问题_42.gif" width="427" height="57" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_43.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_43.png" alt="函数选项的一个问题_43.png" width="57" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[27]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>f1[g1][5, a -> a2]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_44.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_44.png" alt="函数选项的一个问题_44.png" width="126" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_45.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_45.png" alt="函数选项的一个问题_45.png" width="53" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Subsection">
+ 更暴力的方式
+</p>
+
+
+
+<p class="Text">
+ 当函数不使用选项时，这种定义方式是能够解决一些问题的并且方便的一种方式，当开始优化函数时，再修改。
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[28]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Quit</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_46.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_46.png" alt="函数选项的一个问题_46.png" width="32" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Subsection">
+ Practice
+</p>
+
+
+
+<p class="Subsubsection">
+ Version1
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[29]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>f1[g1][x0_] := Module[{x = x0, res},
+  
+  res = MovingMap[f, hold /@ data, 1];
+  
+  ]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_47.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_47.png" alt="函数选项的一个问题_47.png" width="283" height="97" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Subsubsection">
+ Version2
+</p>
+
+
+
+<p class="Text">
+ 先Copy一个再修改
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[30]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Quit</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_48.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_48.png" alt="函数选项的一个问题_48.png" width="32" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[31]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Options[f1] = {a -> True};</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_49.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_49.png" alt="函数选项的一个问题_49.png" width="185" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[32]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>f1[g1][x0_, OptionsPattern[]] := Module[{x = x0, res},
+  res = MovingMap[f, hold /@ data, 1];
+  If[OptionValue[f1, a], A, B]]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_50.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_50.png" alt="函数选项的一个问题_50.png" width="418" height="57" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[33]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>f1[g1][something]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_51.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_51.png" alt="函数选项的一个问题_51.png" width="137" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_52.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_52.png" alt="函数选项的一个问题_52.png" width="8" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[34]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>f1[g1][something, a -> False]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_53.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_53.png" alt="函数选项的一个问题_53.png" width="215" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_54.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_54.png" alt="函数选项的一个问题_54.png" width="8" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 遇到问题喽，肿么办
+</p>
+
+
+
+<p class="Subsubsection">
+ Version3
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[35]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Options[f1g1] = {a -> True};</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_55.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_55.png" alt="函数选项的一个问题_55.png" width="201" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[36]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>f1g1[x0_, OptionsPattern[]] := Module[{x = x0, res},
+  res = MovingMap[f, hold /@ data, 1];
+  If[OptionValue[f1g1, a], A, B]]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_56.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_56.png" alt="函数选项的一个问题_56.png" width="402" height="57" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[37]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>g1 /: f1[g1] := f1g1</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_57.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_57.png" alt="函数选项的一个问题_57.png" width="144" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[38]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>f1[g1][something, a -> False]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_58.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_58.png" alt="函数选项的一个问题_58.png" width="215" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_59.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_59.png" alt="函数选项的一个问题_59.png" width="8" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Subsubsection">
+ Version4
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[39]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Quit</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_60.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_60.png" alt="函数选项的一个问题_60.png" width="32" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[40]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Options[f1] = {a -> True};</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_61.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_61.png" alt="函数选项的一个问题_61.png" width="185" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[41]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>f1[g1][x0_, opts : OptionsPattern[]] := Module[{x = x0, res},
+  res = MovingMap[f, hold /@ data, 1];
+  
+  {
+   If[OptionValue[f1, a], A, B],
+   If[a /. opts, A, B]
+   }
+  
+  ]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_62.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_62.png" alt="函数选项的一个问题_62.png" width="464" height="177" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[42]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>f1[g1][x]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_63.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_63.png" alt="函数选项的一个问题_63.png" width="72" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_64.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_64.png" alt="函数选项的一个问题_64.png" width="215" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[43]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>f1[g1][something, a -> False]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_65.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_65.png" alt="函数选项的一个问题_65.png" width="215" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_66.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/函数选项的一个问题/HTMLFiles/函数选项的一个问题_66.png" alt="函数选项的一个问题_66.png" width="45" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Section" id="section5">
+ 总结
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="函数选项的一个问题" data-title="函数选项的一个问题" data-url="hypergroups.cn/函数选项的一个问题/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

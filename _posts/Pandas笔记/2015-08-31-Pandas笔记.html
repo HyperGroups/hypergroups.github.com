@@ -1,0 +1,214 @@
+---
+layout: post
+category: Computer
+title: Pandas笔记
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/Pandas笔记/index.html#section1" title="十分钟搞定">
+	十分钟搞定</a></p>
+
+	<p class="sectionList Subsection"><a href="/Pandas笔记/index.html#section2" title="Recall">
+	Recall</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ Pandas笔记
+</p>
+
+
+
+<p class="Chapter">
+ @2015-8-31
+</p>
+
+
+
+<p class="Section" id="section1">
+ 十分钟搞定
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="http://www.cnblogs.com/chaosimple/p/4153083.html"><span class="HyperlinkInline">ref</span></a></span>
+</p>
+
+
+
+<p class="Text">
+ 按另一轴操作就是转置后的操作
+</p>
+
+
+
+<p class="Text">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Pandas笔记/HTMLFiles/Pandas笔记_1.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Pandas笔记/HTMLFiles/Pandas笔记_1.png" alt="Pandas笔记_1.png" width="226" height="514" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ shift&hArr;PadLeft
+</p>
+
+
+
+<p class="Section" id="section2">
+ Recall
+</p>
+
+
+
+<p class="Text">
+ Pandas里有Series结构，DataFrame结构
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Pandas笔记/HTMLFiles/Pandas笔记_2.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Pandas笔记/HTMLFiles/Pandas笔记_2.png" alt="Pandas笔记_2.png" width="569" height="96" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ df=pd.DataFrame(np.random.randn(6,4),index=dates,columns=list(&lsquo;ABCD&rsquo;))
+</p>
+
+
+
+<p class="Text">
+ list(&lsquo;ABCD&rsquo;)
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[1]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Characters["ABCD"]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Pandas笔记/HTMLFiles/Pandas笔记_3.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Pandas笔记/HTMLFiles/Pandas笔记_3.png" alt="Pandas笔记_3.png" width="145" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Pandas笔记/HTMLFiles/Pandas笔记_4.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Pandas笔记/HTMLFiles/Pandas笔记_4.png" alt="Pandas笔记_4.png" width="87" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ df.sort_index(axis=1, ascending=False)
+</p>
+
+
+
+<p class="Text">
+ df.sort(columns=&rsquo;B&rsquo;)
+</p>
+
+
+
+<p class="Text">
+ loc是切片，at是访问某个元素，iloc是用数值索引，iat
+</p>
+
+
+
+<p class="Text">
+ 按行和列的索引切片
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Pandas笔记/HTMLFiles/Pandas笔记_5.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Pandas笔记/HTMLFiles/Pandas笔记_5.png" alt="Pandas笔记_5.png" width="436" height="576" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ Boolean Indexing
+</p>
+
+
+
+<p class="Text">
+ 封装了一下numpy的where运算
+</p>
+
+
+
+<p class="Text">
+ df[df > 0]
+</p>
+
+
+
+<p class="Text">
+ Using the isin() method for filtering:
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Pandas笔记" data-title="Pandas笔记" data-url="hypergroups.cn/Pandas笔记/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

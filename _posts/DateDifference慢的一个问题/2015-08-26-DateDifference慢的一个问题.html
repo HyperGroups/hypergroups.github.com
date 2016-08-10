@@ -1,0 +1,333 @@
+---
+layout: post
+category: Mathematica
+title: DateDifference慢的一个问题
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/DateDifference慢的一个问题/index.html#section1" title="前言">
+	前言</a></p>
+
+	<p class="sectionList Subsection"><a href="/DateDifference慢的一个问题/index.html#section2" title="问题">
+	问题</a></p>
+
+	<p class="sectionList Subsection"><a href="/DateDifference慢的一个问题/index.html#section3" title="优化">
+	优化</a></p>
+
+	<p class="sectionList Subsection"><a href="/DateDifference慢的一个问题/index.html#section4" title="总结">
+	总结</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ DateDifference慢的一个问题
+</p>
+
+
+
+<p class="Chapter">
+ @2015-8-26
+</p>
+
+
+
+<p class="Section" id="section1">
+ 前言
+</p>
+
+
+
+<p class="Text">
+ 在处理数据的量达到百万行的时候，就要考虑一些性能问题，通常对于一段程序的速度的容忍是能否秒出。
+</p>
+
+
+
+<p class="Text">
+ 比如一个小程序，在实际的工作中，数量在100万行，10分钟跑出来，还是能接受的，通常假设一个表有10个字段，那么处理的量级就很容易就上了1000万行，这时如果100分钟跑出来就显得非常慢了，就要考虑能否优化，对比下其他工具[如Python/Java]的效率等，看是否合理。
+</p>
+
+
+
+<p class="Section" id="section2">
+ 问题
+</p>
+
+
+
+<p class="Text">
+ 如何快速计算两列字符串日期的差值？
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[1]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>sampleData = 
+  ConstantArray[{{"2014/12/12 23:24:17.303", 
+      "2015/1/1 00:00:58.807"}, {"2014/12/9 11:21:29.443", 
+      "2015/1/1 00:01:07.277"}, {"2014/12/8 16:52:00.517", 
+      "2015/1/1 00:01:23.273"}, {"2014/12/8 16:50:39.150", 
+      "2015/1/1 00:02:24.180"}, {"2014/12/14 22:06:04.663", 
+      "2015/1/1 00:03:02.090"}}, 10000] // Flatten[#, 1] &;</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_1.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_1.png" alt="DateDifference慢的一个问题_1.png" width="674" height="117" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[2]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>t1 = SessionTime[];
+dateList = 
+  Map[DateList[{First[StringSplit[#]], {"Year", "/", "Month", "/", 
+       "Day"}}] &, sampleData, {2}];
+t2 = SessionTime[];
+t = t2 - t1</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_2.gif" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_2.gif" alt="DateDifference慢的一个问题_2.gif" width="673" height="97" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_3.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_3.png" alt="DateDifference慢的一个问题_3.png" width="80" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 在这种方式下，5万行要34秒，那么500万行就要1个小时，太慢了。
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[3]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>100 34/3600 // N</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_4.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_4.png" alt="DateDifference慢的一个问题_4.png" width="130" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_5.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_5.png" alt="DateDifference慢的一个问题_5.png" width="64" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 话说有个新函数计算这个东东，待补全
+</p>
+
+
+
+<p class="Section" id="section3">
+ 优化
+</p>
+
+
+
+<p class="Text">
+ 但是这要一个简单的函数的简单使用，并行Map也只有几倍速的提升外，似乎是没有什么好的办法了。
+</p>
+
+
+
+<p class="Text">
+ 苹果提供的一个思路是自己写一个DateDifference
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_6.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_6.png" alt="DateDifference慢的一个问题_6.png" width="652" height="116" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ 相当于是提前算好所有的算好的有的月份，然后直接引用即可，因为虽然实际中有几百万行，但是删重后才几万行而已。
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[4]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>timeList // Length</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_7.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_7.png" alt="DateDifference慢的一个问题_7.png" width="136" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_8.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_8.png" alt="DateDifference慢的一个问题_8.png" width="61" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[5]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>dateList = Map[First[StringSplit[#, " "]] &, Values /@ timeList, {2}];</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_9.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_9.png" alt="DateDifference慢的一个问题_9.png" width="533" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[6]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>dateListU = dateList // DeleteDuplicates;
+% // Length</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_10.gif" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_10.gif" alt="DateDifference慢的一个问题_10.gif" width="312" height="37" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_11.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_11.png" alt="DateDifference慢的一个问题_11.png" width="42" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[7]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>SetSystemOptions["DataOptions" -> "ReturnQuantities" -> False];</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_12.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_12.png" alt="DateDifference慢的一个问题_12.png" width="474" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[8]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>group0 = GroupBy[dateList, # &];</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_13.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_13.png" alt="DateDifference慢的一个问题_13.png" width="243" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[9]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>t1 = SessionTime[];
+group = KeyMap[{#, DateDifference @@ AbsoluteTime /@ #} &, group0];
+t2 = SessionTime[];
+t = t2 - t1</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_14.gif" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_14.gif" alt="DateDifference慢的一个问题_14.gif" width="503" height="77" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_15.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/DateDifference慢的一个问题/HTMLFiles/DateDifference慢的一个问题_15.png" alt="DateDifference慢的一个问题_15.png" width="80" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 因此，30秒跑完还是很不错的，能实用了。
+</p>
+
+
+
+<p class="Section" id="section4">
+ 总结
+</p>
+
+
+
+<p class="Text">
+ 其实写着写着有点跑题了，如何让不同的100万行时间对求时间间隔又是另一个问题啦。
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="DateDifference慢的一个问题" data-title="DateDifference慢的一个问题" data-url="hypergroups.cn/DateDifference慢的一个问题/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

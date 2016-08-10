@@ -1,0 +1,578 @@
+---
+layout: post
+category: Mathematica
+title: Unicode编码笔记
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/Unicode编码笔记/index.html#section1" title="百度百科">
+	百度百科</a></p>
+
+	<p class="sectionList Subsection"><a href="/Unicode编码笔记/index.html#section2" title="Mathematica">
+	Mathematica</a></p>
+
+	<p class="sectionList Subsection"><a href="/Unicode编码笔记/index.html#section3" title="现在我们做一个小应用，用Mathematica查询一个百度词典和百度搜索的结果。">
+	现在我们做一个小应用，用Mathematica查询一个百度词典和百度搜索的结果。</a></p>
+
+	<p class="sectionList Subsection"><a href="/Unicode编码笔记/index.html#section4" title="Tex">
+	Tex</a></p>
+
+	<p class="sectionList Subsection"><a href="/Unicode编码笔记/index.html#section5" title="待更新">
+	待更新</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ Unicode编码笔记
+</p>
+
+
+
+<p class="Subtitle">
+ @2013-03-01
+</p>
+
+
+
+<p class="Text">
+ Unicode, UTF-8, ANSI是三个我最常接触到的编码，特别是文本文件。
+</p>
+
+
+
+<p class="Text">
+ Mathematica默认的应用于Import的编码是UTF-8的。CharacterEncoding默认是CP936和CP949
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[1]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>$CharacterEncoding</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_1.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_1.png" alt="Unicode编码笔记_1.png" width="145" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_2.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_2.png" alt="Unicode编码笔记_2.png" width="33" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Section" id="section1">
+ 百度百科
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="http://baike.baidu.com/link?url=jbxGeeqIaEH4zKahNjyiEuSGF1jHjl2iJAzp4Pa0_dT_iP3E_HDMj04ZDOmDtTvc"><span class="HyperlinkInline">unicode百度百科</span></a></span>
+</p>
+
+
+
+<p class="Text">
+ Unicode（统一码、万国码、单一码）是一种在计算机上使用的字符编码。Unicode 是为了解决传统的字符编码方案的局限而产生的，它为每种语言中的每个字符设定了统一并且唯一的二进制编码，以满足跨语言、跨平台进行文本转换、处理的要求。1990年开始研发，1994年正式公布。随着计算机工作能力的增强，Unicode也在面世以来的十多年里得到普及。
+</p>
+
+
+
+<p class="Section" id="section2">
+ Mathematica
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[2]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>ToString[汉, CharacterEncoding -> #] & /@ {"ASCII", "WindowsANSI", 
+  "Unicode", "UTF8", "CP936", "CP949"}</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_3.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_3.png" alt="Unicode编码笔记_3.png" width="484" height="39" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_4.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_4.png" alt="Unicode编码笔记_4.png" width="188" height="18" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[3]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>ToString["汉", CharacterEncoding -> #] & /@ {"ASCII", "WindowsANSI", 
+  "Unicode", "UTF8", "CP936", "CP949"}</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_5.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_5.png" alt="Unicode编码笔记_5.png" width="484" height="39" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_6.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_6.png" alt="Unicode编码笔记_6.png" width="188" height="18" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ UTF-8以字节为单位对Unicode进行编码。
+</p>
+
+
+
+<p class="Text">
+ 我们看到，IE浏览器的编码设置里它们是一起的。
+</p>
+
+
+
+<p class="Text">
+ <span class="InputInline"><span><a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_7.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_7.png" alt="Unicode编码笔记_7.png" width="652" height="223" style="vertical-align:middle"/></a></span></span>
+</p>
+
+
+
+<p class="Text">
+ 我们在搜索地址栏搜索的时候，会发现中文经常会变成这样子。比如&middot;汉&middot;字变成了。
+</p>
+
+
+
+<p class="Text">
+ %E6%B1%89
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[4]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Word2UTF8[x_] := 
+ "%" <> ToString[
+   Row[IntegerString[ToCharacterCode[ToString[x], "UTF8"], 16] // 
+     ToUpperCase, "%"]]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_8.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_8.png" alt="Unicode编码笔记_8.png" width="700" height="55" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[5]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Word2UTF8[汉]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_9.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_9.png" alt="Unicode编码笔记_9.png" width="106" height="18" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_10.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_10.png" alt="Unicode编码笔记_10.png" width="70" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[6]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Word2Unicode[x_] := 
+ "%" <> ToString[
+   Row[IntegerString[ToCharacterCode[ToString[x], "Unicode"], 16] // 
+     ToUpperCase, "%"]]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_11.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_11.png" alt="Unicode编码笔记_11.png" width="700" height="76" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[7]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Word2Unicode[汉]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_12.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_12.png" alt="Unicode编码笔记_12.png" width="130" height="18" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_13.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_13.png" alt="Unicode编码笔记_13.png" width="36" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ &middot;汉&middot;的这个结果跟之前ToString的结果是一样的，只是小写变成了大写。
+</p>
+
+
+
+<p class="Text">
+ 在IE11地址栏中输入&middot;汉&middot;，会自动变成如下
+</p>
+
+
+
+<p class="Text">
+ http://www.baidu.com/s?tn=mswin_oem_dg&ie=utf-8&word=%E6%B1%89
+</p>
+
+
+
+<p class="Text">
+ 在谷歌浏览器地址栏中输入&middot;汉&middot;，则会显示
+</p>
+
+
+
+<p class="Text">
+ http://www.baidu.com/s?ie=UTF-8&wd=汉
+</p>
+
+
+
+<p class="Text">
+ 而复制到Mathematica笔记本的文本单元，又自动转换成
+</p>
+
+
+
+<p class="Text">
+ http://www.baidu.com/s?ie=UTF-8&wd=%E6%B1%89
+</p>
+
+
+
+<p class="Section" id="section3">
+ 现在我们做一个小应用，用Mathematica查询一个百度词典和百度搜索的结果。
+</p>
+
+
+
+<p class="Subsection">
+ 百度词典
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[8]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>DictBaidu[x0_] :=
+ 	Module[{x = x0},
+  	"http://dict.baidu.com/s?wd=" <> "%" <> 
+   ToString[
+    Row[IntegerString[ToCharacterCode[ToString[x], "UTF8"], 16] // 
+      ToUpperCase, "%"]]
+  ]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_14.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_14.png" alt="Unicode编码笔记_14.png" width="688" height="117" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[9]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Import[DictBaidu[人], "Plaintext"] // StringTake[#, 200] &</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_15.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_15.png" alt="Unicode编码笔记_15.png" width="449" height="18" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_16.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_16.png" alt="Unicode编码笔记_16.png" width="427" height="291" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 然而，实际上我之前多此一举了，在这里没有必要转成16进制的，直接用中文即可。
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[10]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Import["http://dict.baidu.com/s?wd=人", "Plaintext"] // 
+ StringTake[#, 200] &</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_17.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_17.png" alt="Unicode编码笔记_17.png" width="597" height="18" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_18.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_18.png" alt="Unicode编码笔记_18.png" width="427" height="291" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Subsection">
+ www.baidu.com
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[11]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Import["http://www.baidu.com/s?tn=mswin_oem_dg&ie=utf-8&word=%E6%B1%\
+89"]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_19.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_19.png" alt="Unicode编码笔记_19.png" width="585" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_20.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_20.png" alt="Unicode编码笔记_20.png" width="12" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 使用URLFetch可以返回结果，URLFetch还是给力的，可以传登录密码啥的，比如获取维基百科的收藏夹。
+</p>
+
+
+
+<p class="Section" id="section4">
+ Tex
+</p>
+
+
+
+<p class="Text">
+ 比如另存为Mathematica含中文的文档，其中中文会变成如下的形式
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[12]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>ImportString[
+   "$\\unicode{8bbe}\\unicode{6709}\\unicode{4e8c}\\unicode{6b21}\\\
+unicode{591a}\\unicode{9879}\\unicode{5f0f}$", "TeX", 
+   CharacterEncoding -> "Unicode"][[1, 1]] // CellPrint</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_21.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_21.png" alt="Unicode编码笔记_21.png" width="700" height="74" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Text">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_22.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_22.png" alt="Unicode编码笔记_22.png" width="652" height="29" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 如何变回中文显示在Mathematica中呢?
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[13]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>"这部分是中文哦+++++++++\\unicode{8bbe}\\unicode{6709}\\unicode{4e8c}\\\
+unicode{6b21}\\unicode{591a}\\unicode{9879}\\unicode{5f0f}" // 
+ StringReplace[#, 
+   Shortest["\\unicode{" ~~ x__ ~~ "}"] :> 
+    ToString@ToExpression["\\:" <> x]] &</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_23.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_23.png" alt="Unicode编码笔记_23.png" width="700" height="56" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_24.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_24.png" alt="Unicode编码笔记_24.png" width="296" height="17" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[14]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>StringCases[
+ Import["http://www.baidu.\
+com"(*这里没有返回结果，是因为页面中没有相应要提取的信息，整理文档时发现原网址挂了。*), "Plaintext"], 
+ Shortest["\\unicode{" ~~ x__ ~~ "}"] :> 
+  ToString@ToExpression["\\:" <> x]]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_25.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_25.png" alt="Unicode编码笔记_25.png" width="700" height="84" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_26.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_26.png" alt="Unicode编码笔记_26.png" width="8" height="15" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[15]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>Notebook2Tex[file_, nb_: EvaluationNotebook[]] := 
+ Export[file, 
+  ExportString[nb, "TeX"] // 
+   StringReplace[#, 
+     Shortest["\\unicode{" ~~ x__ ~~ "}"] :> 
+      ToString@ToExpression["\\:" <> x]] &]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_27.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_27.png" alt="Unicode编码笔记_27.png" width="448" height="77" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Text">
+ 对于连续的这样的字符串，使用ToExpression即可
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[16]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>"\\:8bbe\\:6709\\:4e8c\\:6b21\\:591a\\:9879\\:5f0f" // ToExpression</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_28.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_28.png" alt="Unicode编码笔记_28.png" width="530" height="16" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_29.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_29.png" alt="Unicode编码笔记_29.png" width="112" height="17" style="vertical-align:middle"/></a>
+</p>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[17]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>"加点乱七八遭的就不行了+++\\:8bbe\\:6709\\:4e8c\\:6b21\\:591a\\:9879\\:5f0f" // \
+ToExpression</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_30.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_30.png" alt="Unicode编码笔记_30.png" width="641" height="37" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Message">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_31.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_31.png" alt="Unicode编码笔记_31.png" width="558" height="16" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Output">
+ <a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_32.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/Unicode编码笔记/HTMLFiles/Unicode编码笔记_32.png" alt="Unicode编码笔记_32.png" width="319" height="17" style="vertical-align:middle"/></a>
+</p>
+
+<p class="Text">
+ 因为整个字符串并不够成好的表达式的字符串，因此才要提取相应的部分转换
+</p>
+
+
+
+<p class="Section" id="section5">
+ 待更新
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Unicode编码笔记" data-title="Unicode编码笔记" data-url="hypergroups.cn/Unicode编码笔记/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>
