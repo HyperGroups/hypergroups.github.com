@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created with the Wolfram Language : www.wolfram.com -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  Untitled
+ </title>
+ <link href="HTMLFiles/空间四边形.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<p class="Title">
+ &#31354;&#38388;&#22235;&#36793;&#24418;
+</p>
+
+
+
+
+{% raw %}<pre class="Input"><code>sampleImage = image;</code></pre>{% endraw %}
+
+{% raw %}<pre class="Input"><code>pointPositionFront = Insert[#, 2, 1] & /@ (Tuples[Range[-1, 1], {2}])</code></pre>{% endraw %}
+<p class="Output">
+ <img src="HTMLFiles/空间四边形_1.png" alt="&#31354;&#38388;&#22235;&#36793;&#24418;_1.png" width="70" height="150" style="vertical-align:middle" />
+</p>
+
+
+{% raw %}<pre class="Input"><code>pointPositionAll = 
+  Table[pointPositionFront.RotationMatrix[-90 i Degree, {0, 0, 
+      1}], {i, 0, 3}];</code></pre>{% endraw %}
+
+{% raw %}<pre class="Input"><code>number := RandomInteger[{1, 9}, {4}]</code></pre>{% endraw %}
+
+{% raw %}<pre class="Input"><code>numbers = Table[number, {10}]</code></pre>{% endraw %}
+<p class="Output">
+ <img src="HTMLFiles/空间四边形_2.png" alt="&#31354;&#38388;&#22235;&#36793;&#24418;_2.png" width="67" height="167" style="vertical-align:middle" />
+</p>
+
+
+{% raw %}<pre class="Input"><code>line = Table[pointPositionAll[[i]][[number[[i]]]], {i, 4}]</code></pre>{% endraw %}
+<p class="Output">
+ <img src="HTMLFiles/空间四边形_3.png" alt="&#31354;&#38388;&#22235;&#36793;&#24418;_3.png" width="70" height="65" style="vertical-align:middle" />
+</p>
+
+
+{% raw %}<pre class="Input"><code>Table[Graphics3D[{Texture[sampleImage], 
+   Polygon[lines[[i]], 
+    VertexTextureCoordinates -&gt; Normalize /@ line]}, 
+  Boxed -&gt; False], {i, 10}]</code></pre>{% endraw %}
+<p class="Output">
+ <img src="HTMLFiles/空间四边形_4.png" alt="&#31354;&#38388;&#22235;&#36793;&#24418;_4.png" width="1843" height="191" style="vertical-align:middle" />
+</p>
+
+
+{% raw %}<pre class="Input"><code>data = Table[{r, g, b}, {r, 0, 1, 1/20}, {g, 0, 1, 1/20}, {b, 0, 1, 
+    1/20}];</code></pre>{% endraw %}
+
+{% raw %}<pre class="Input"><code>data = sampleImage;</code></pre>{% endraw %}
+
+{% raw %}<pre class="Input"><code>Graphics3D[{Texture[data], EdgeForm[], 
+  Table[With[{pts = 
+      RotateRight[#, k] & /@ {{1/2, 0, 0}, {1/2, 1, 0}, {1/2, 1, 
+         1}, {1/2, 0, 1}}}, 
+    Polygon[pts, VertexTextureCoordinates -&gt; pts]], {k, 3}]}, 
+ Lighting -&gt; "Neutral"]</code></pre>{% endraw %}
+<p class="Output">
+ <img src="HTMLFiles/空间四边形_5.png" alt="&#31354;&#38388;&#22235;&#36793;&#24418;_5.png" width="367" height="365" style="vertical-align:middle" />
+</p>
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div>
+</body>
+
+</html>
