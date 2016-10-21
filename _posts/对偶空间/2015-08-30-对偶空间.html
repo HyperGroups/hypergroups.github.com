@@ -1,0 +1,214 @@
+---
+layout: post
+category: Math
+title: 对偶空间
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/对偶空间/index.html#section1" title="Basic">
+	Basic</a></p>
+
+	<p class="sectionList Subsection"><a href="/对偶空间/index.html#section2" title="">
+	</a></p>
+
+	<p class="sectionList Subsection"><a href="/对偶空间/index.html#section3" title="">
+	</a></p>
+
+	<p class="sectionList Subsection"><a href="/对偶空间/index.html#section4" title="">
+	</a></p>
+
+	<p class="sectionList Subsection"><a href="/对偶空间/index.html#section5" title="">
+	</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ 对偶空间
+</p>
+
+
+
+<p class="Chapter">
+ @2015-8-30
+</p>
+
+
+
+<p class="Section" id="section1">
+ Basic
+</p>
+
+
+
+<p class="Text">
+ 什么是对偶空间？
+</p>
+
+
+
+<p class="Text">
+ 向量空间到实数域的线性映射的集合。
+</p>
+
+
+
+<p class="Text">
+ 不要觉得奇怪，为什么是映射的集合，正如曲线，也可以定义为是区间到向量空间的映射。
+</p>
+
+
+
+<p class="Section" id="section2">
+ 
+</p>
+
+
+
+<p class="Text">
+ &nbsp;&nbsp;&nbsp;&nbsp;It pays to study functions. In fact, functions appear at times to be more basic than their domains. In the context of linear algebra, the natural class of functions is linear transformations, or linear maps from one vector space to another. Among all real vector spaces, there is one that seems simplest, namely the one-dimensional vector space of the real numbers <em>R</em>. This leads us to examine a special type of linear transformation on a vector space, those that map the vector space to the real numbers, the set of which we will call the dual space. Dual spaces regularly show up in mathematics. 
+</p>
+
+
+
+<p class="Text">
+ &nbsp;&nbsp;&nbsp;&nbsp;Let <em>V</em> be a vector space. The dual vector space, or dual space, is: 
+</p>
+
+
+
+<p class="DisplayFormula">$$V^*=\{\text{ linear maps from } V \text{  to the real numbers } R\} =\left\{v^*:V \to R\left|v^* \text{  is linear}\right.\right\}.$$</p><p class="Text">
+ You can check that the dual space <span>$V^*$</span> is itself a vector space.
+</p>
+
+
+
+<p class="Text">
+ &nbsp;&nbsp;&nbsp;&nbsp;Let <span>$T: V\to W$</span> be a linear transformation. Then we can define a natural linear transformation 
+</p>
+
+
+
+<p class="DisplayFormula">$$T^*: W^*\to  V^*$$</p><p class="Text">
+ from the dual of <em>W</em> to the dual of <em>V</em> as follows. Let <span>$w^*\in W^*$</span>. Then given any vector <em>w</em> in the vector space <em>W</em>, we know that <span>$w^* (w)$</span> will be a real number. We need to define <span>$T^*$</span> so that <span>$T^* \left(w^*\right)\in V^*$</span>. Thus given any vector <em>v</em><em>&isin;</em><em>V</em>, we need <span>$T^* \left(w^*\right) (v)$</span> to be a real number. Simply define 
+</p>
+
+
+
+<p class="DisplayFormula">$$T^*\left(w^*\right)(v) = w^*(T(v)).$$</p><p class="Text">
+ &nbsp;&nbsp;&nbsp;&nbsp;By the way, note that the direction of the linear transformation <span>$T:V \to W$</span> is indeed reversed to <span>$T^* : W^* \to V^*$</span>. Also by "natural", we do not mean that the map <span>$T^*$</span> is "obvious" but instead that it can be uniquely associated to the original linear transformation <em>T</em>. 
+</p>
+
+
+
+<p class="Text">
+ &nbsp;&nbsp;&nbsp;&nbsp;Such a dual map shows up in many different contexts. For example, if <em>X</em> and <em>Y</em> are topological spaces with a continuous map <span>$F:X\to Y$</span> and if <span>$C(X)$</span> and <span>$C(Y)$</span> denote the sets of continuous real-valued functions on <em>X</em> and <em>Y</em>, then here the dual map 
+</p>
+
+
+
+<p class="DisplayFormula">$$F^*:C(Y)\to C(X)$$</p><p class="Text">
+ is defined by <span>$F^*(g)(x) = g(F(x))$</span>, where <em>g</em> is a continuous map on <em>Y</em>. 
+</p>
+
+
+
+<p class="Text">
+ &nbsp;&nbsp;&nbsp;&nbsp;Attempts to abstractly characterize all such dual maps were a major theme of mid-twentieth century mathematics and can be viewed as one of the beginnings of category theory.
+</p>
+
+
+
+<p class="Section" id="section3">
+ 
+</p>
+
+
+
+<p class="Text">
+ 向量空间<em>V</em>和其对偶空间<span>$V^*$</span>是互为对偶空间的，因此，一个向量空间都可以看成是某一向量空间的线性函数所成的空间。
+</p>
+
+
+
+<p class="Section" id="section4">
+ 
+</p>
+
+
+
+<p class="Text">
+ 对偶的概念在许多地方都会出现，比如规划算法，对偶单纯形，机器学习里核方法里等
+</p>
+
+
+
+<p class="Section" id="section5">
+ 
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="http://en.wikipedia.org/wiki/Dual_space"><span class="HyperlinkInline">wiki</span></a></span>
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="对偶空间" data-title="对偶空间" data-url="hypergroups.cn/对偶空间/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>

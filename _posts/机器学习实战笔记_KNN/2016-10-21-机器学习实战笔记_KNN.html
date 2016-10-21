@@ -1,0 +1,281 @@
+---
+layout: post
+title: 机器学习实战笔记-KNN
+categories: MachineLearning
+tags: 
+---
+
+<h3>Hyper@2016-10-21</h3>
+Class=MachineLearning<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created with the Wolfram Language : www.wolfram.com -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>机器学习实战笔记_KNN</title>
+ <link href="HTMLFiles\机器学习实战笔记_KNN\机器学习实战笔记_KNN.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<p class="Title">
+ &#26426;&#22120;&#23398;&#20064;&#23454;&#25112;&#31508;&#35760;-KNN
+</p>
+
+
+
+<p class="Section">&#31532;2&#31456;</p>
+
+<p class="Subsection">
+ &#31243;&#24207;2-1
+</p>
+
+
+
+<p class="Text">
+ diffMat=tile(inX, (dataSetSize,1))-dataSet
+</p>
+
+
+
+<p class="Text">
+ 
+{% raw %}<pre class="Input"><code><span><img src="HTMLFiles\机器学习实战笔记_KNN\机器学习实战笔记_KNN_1.png" alt="temp_1.png" width="754" height="880" style="vertical-align:middle" /></span></code></pre>{% endraw %}
+
+</p>
+
+
+
+<p class="Text">
+ tile&#23601;&#26159;&#24179;&#38138;&#65292;&#29926;&#29255;&#65292;&#25805;&#20316;&#31995;&#32479;&#26700;&#38754;&#30340;&#32972;&#26223;&#22270;&#29255;&#37324;&#26377;&#36825;&#35789;
+</p>
+
+
+
+<p class="Text">
+ argsort&#36820;&#22238;&#30340;&#26159;&#20301;&#32622;&hArr;Ordering
+</p>
+
+
+
+
+{% raw %}<pre class="Input"><code>orders = Ordering[list = {1, 3, 5, 2, 8, 4}]</code></pre>{% endraw %}
+<p class="Output">
+ <img src="HTMLFiles\机器学习实战笔记_KNN\机器学习实战笔记_KNN_2.png" alt="temp_2.png" width="226 height="31" style="vertical-align:middle" /
+</p>
+
+
+{% raw %}<pre class="Input"><code>Extract[list, List /@ orders]</code></pre>{% endraw %}
+<p class="Output">
+ <img src="HTMLFiles\机器学习实战笔记_KNN\机器学习实战笔记_KNN_3.png" alt="temp_3.png" width="226 height="31" style="vertical-align:middle" /
+</p>
+
+<p class="Text">
+ &#30697;&#38453;&#37324;&#25353;&#36317;&#31163;&#35745;&#31639;&#65292;&#23545;&#36317;&#31163;&#25490;&#24207;&#21518;&#28982;&#21518;&#20174;Labels&#37324;&#25552;&#21462;&#20570;&#24490;&#29615;&#65292;&#20854;&#23454;&#23601;&#26159;intX&#36319;&#30697;&#38453;&#37324;&#30340;&#27599;&#20010;Vector&#36827;&#34892;&#19968;&#27425;&#36317;&#31163;&#30340;&#24230;&#37327;&#65292;&#28982;&#21518;&#20877;&#36873;&#25321;&#36317;&#31163;&#26368;&#23567;&#30340;&#28857;&#12290;
+</p>
+
+
+
+
+{% raw %}<pre class="Input"><code>classify0[vec_, dataSet_, labels_, k_] :=
+
+ Block[{},
+
+  dataSetSize = dataSet // Dimensions;
+
+  
+
+  diffMat = ConstantArray[vec, dataSetSize[[1]]] - dataSet;
+
+  (*注意这里dataSetSize索引取值和vec是一维还是二维的变化情况*)
+
+  sqDiffMat = diffMat^2;
+
+  sqDistances = sqDiffMat // Total[#, {2}] &;
+
+  (*这里Total类比numpy里的一些axis的操作，也可以用Total/@#&*)
+
+  distances = Sqrt[sqDistances];
+
+  sortedDistIndices = distances // Ordering;
+
+  classCount = Association[];
+
+  For[i = 1, i &lt;= k, i++,
+
+   voteIlabel = labels[[sortedDistIndices[[i]]]];
+
+   If[KeyExistsQ[classCount, voteIlabel], classCount[voteIlabel] += 1,
+
+     classCount[voteIlabel] = 1];
+
+   ];
+
+  
+
+  Sort[classCount] // Reverse
+
+  
+
+  
+
+  ]</code></pre>{% endraw %}
+
+{% raw %}<pre class="Input"><code>vec = RandomReal[10, {2}];
+
+dataSet = RandomReal[10, {20, 2}];
+
+(*使用聚类算法标注一下。。。*)
+
+asso = Association[
+
+   Flatten[Thread /@ 
+
+     Thread[FindClusters[dataSet, 4] -&gt; CharacterRange["A", "D"]]]];
+
+labels = asso /@ dataSet
+
+dataSet // MatrixForm
+
+ListPlot[{dataSet, {vec}}, PlotStyle -&gt; PointSize[.05], 
+
+ Epilog -&gt; Thread[Text[labels, dataSet]]]</code></pre>{% endraw %}
+<p class="Output">
+ <img src="HTMLFiles\机器学习实战笔记_KNN\机器学习实战笔记_KNN_4.png" alt="temp_4.png" width="700 height="31" style="vertical-align:middle" /
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles\机器学习实战笔记_KNN\机器学习实战笔记_KNN_5.png" alt="temp_5.png" width="272 height="652" style="vertical-align:middle" /
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles\机器学习实战笔记_KNN\机器学习实战笔记_KNN_6.png" alt="temp_6.png" width="700 height="446" style="vertical-align:middle" /
+</p>
+
+
+{% raw %}<pre class="Input"><code>classify0[vec, dataSet, labels, 10]</code></pre>{% endraw %}
+<p class="Output">
+ <img src="HTMLFiles\机器学习实战笔记_KNN\机器学习实战笔记_KNN_7.png" alt="temp_7.png" width="363 height="31" style="vertical-align:middle" /
+</p>
+
+<p class="Text">
+ 
+{% raw %}<pre class="Input"><code><span><img src="HTMLFiles\机器学习实战笔记_KNN\机器学习实战笔记_KNN_8.png" alt="temp_8.png" width="764" height="528" style="vertical-align:middle" /></span></code></pre>{% endraw %}
+
+</p>
+
+
+
+<p class="Subsection">
+ &#20248;&#21270;&#29256;
+</p>
+
+
+
+<p class="Text">
+ &#22914;&#26524;&#35201;&#22312;&#22823;&#37327;&#30340;&#25968;&#25454;&#19978;&#36827;&#34892;&#19968;&#20123;&#23454;&#25112;&#65292;&#21152;&#20123;&#31616;&#21333;&#30340;&#31574;&#30053;&#65292;&#27604;&#22914;&#32858;&#31867;&#21518;&#65292;&#23545;&#27599;&#20998;&#32452;&#32034;&#24341;&#31561;&#65292;&#28982;&#21518;&#20877;&#23545;&#23567;&#31867;[&#21306;&#22495;]&#36827;&#34892;&#26356;&#32454;&#30340;&#27604;&#23545;&#65292;&#25110;&#20351;&#29992;KD-Tree&#31561;&#31561;&#65292;&#36825;&#20123;&#23646;&#20110;&#31639;&#27861;&#21644;&#25968;&#25454;&#32467;&#26500;&#30340;&#20248;&#21270;
+</p>
+
+
+
+<p class="Subsubsection">
+ Mathematica&#29256;&#20195;&#30721;&#20248;&#21270;
+</p>
+
+
+
+<p class="Text">
+ &#22312;&#31867;&#27604;numpy&#25968;&#32452;&#30340;&#25805;&#20316;&#20013;&#65292;&#36824;&#26159;&#33258;&#24049;&#20174;&#30697;&#38453;&#32467;&#26500;&#35745;&#31639;&#20102;&#19968;&#19979;&#27431;&#27663;&#36317;&#31163;&#65292;&#37027;&#20040;&#22914;&#26524;&#35843;&#29992;&#19968;&#20010;&#35745;&#31639;+map&#19968;&#19979;&#21602;&#65311;
+</p>
+
+
+
+
+{% raw %}<pre class="Input"><code>classify1[vec_, dataSet_, labels_, k_] :=
+
+ Block[{},
+
+  distances1 = EuclideanDistance[vec, #] & /@ dataSet;
+
+  sortedDistIndices = distances1 // Ordering;
+
+  classCount = Association[];
+
+  For[i = 1, i &lt;= k, i++,
+
+   voteIlabel = labels[[sortedDistIndices[[i]]]];
+
+   If[KeyExistsQ[classCount, voteIlabel], classCount[voteIlabel] += 1,
+
+     classCount[voteIlabel] = 1];
+
+   ];
+
+  
+
+  Sort[classCount] // Reverse
+
+  
+
+  
+
+  ]</code></pre>{% endraw %}
+
+{% raw %}<pre class="Input"><code>classify1[vec, dataSet, labels, 10]</code></pre>{% endraw %}
+<p class="Output">
+ <img src="HTMLFiles\机器学习实战笔记_KNN\机器学习实战笔记_KNN_9.png" alt="temp_9.png" width="363 height="31" style="vertical-align:middle" /
+</p>
+
+<p class="Text">
+ &#22914;&#26524;&#20351;&#29992;pandas&#30340;&#35805;&#65292;&#20063;&#21487;&#20197;&#23545;&#25972;&#20010;&#25968;&#25454;&#38598;&#36827;&#34892;&#19968;&#27425;apply&#19968;&#20010;&#20989;&#25968;&#65292;python&rArr;numpy&rArr;pandas&#65292;&#28982;&#21518;&#20195;&#30721;&#36234;&#26469;&#36234;&#30701;&#12290;&#12290;&#12290;
+</p>
+
+
+
+
+{% raw %}<pre class="Input"><code>classify2[vec_, dataSet_, labels_, k_] :=
+
+ Block[{},
+
+  asso = AssociationThread[dataSet -&gt; labels];
+
+  assoSorted = KeySortBy[asso, EuclideanDistance[vec, #] &];
+
+  res = Counts[Values@assoSorted[[1 ;; k]]] // Sort // Reverse
+
+  ]</code></pre>{% endraw %}
+
+{% raw %}<pre class="Input"><code>classify2[vec, dataSet, labels, 10]</code></pre>{% endraw %}
+<p class="Output">
+ <img src="HTMLFiles\机器学习实战笔记_KNN\机器学习实战笔记_KNN_10.png" alt="temp_10.png" width="363 height="31" style="vertical-align:middle" /
+</p>
+
+<p class="Text">
+ &#24403;&#28982;&#20063;&#21487;&#20197;&#20889;&#25104;&#19968;&#21477;&#35805;&rArr;&#30495;&#23612;&#29595;&#30701;<br />&#36825;&#23601;&#26159;&#23398;&#20064;&#20351;&#29992;&#19968;&#20123;&#39640;&#32423;&#20989;&#25968;&#21644;&#25968;&#25454;&#32467;&#26500;&#65292;&#22312;&#20570;&#23454;&#39564;&#65292;&#23398;&#20064;&#19968;&#20123;&#19996;&#35199;&#26102;&#65292;&#21487;&#20197;&#20808;&#25226;&#19968;&#20123;&#19981;&#26159;&#37325;&#28857;&#30340;&#19996;&#35199;pass&#25481;&#65292;&#20851;&#27880;&#22914;&#20309;&#35843;&#19968;&#20123;&#20851;&#38190;&#21442;&#25968;&#65292;&#20570;&#20986;&#25928;&#26524;&#31561;&#65292;&#24403;&#28982;&#21069;&#25552;&#26159;&#25968;&#25454;&#26159;&#29702;&#24819;&#30340;&#12290;
+</p>
+
+
+
+
+{% raw %}<pre class="Input"><code>Counts[KeySortBy[AssociationThread[dataSet -&gt; labels], 
+
+      EuclideanDistance[vec, #] &][[1 ;; 10]] // Values] // 
+
+  Sort // Reverse</code></pre>{% endraw %}
+<p class="Output">
+ <img src="HTMLFiles\机器学习实战笔记_KNN\机器学习实战笔记_KNN_11.png" alt="temp_11.png" width="363 height="31" style="vertical-align:middle" /
+</p>
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div>
+</body>
+
+</html>

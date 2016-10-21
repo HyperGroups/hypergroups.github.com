@@ -1,0 +1,188 @@
+---
+layout: post
+category: Mathematica
+title: 给Mathematica的css文件修改与增加值
+---
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+            <link href="/1stylesheets/Default.css" rel="stylesheet" type="text/css" />
+			
+		<!-- 图片点击放大插件 starting -->
+<link href="/1Plugins/ImgZoom/css/lightbox.css" rel="stylesheet" />
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/1Plugins/ImgZoom/js/lightbox-2.6.min.js"></script>
+		<!-- 图片点击放大插件 end -->
+		
+		
+	</head>
+  
+  <body onload="prettyPrint()" >
+
+	<div id="bar" class="SectionListBar">
+	<br><br><br><br><br><br>
+
+	<p class="sectionList Subsection"><a href="/给Mathematica的css文件修改与增加值/index.html#section1" title="版本1 只能修改一次">
+	版本1 只能修改一次</a></p>
+
+	<p class="sectionList Subsection"><a href="/给Mathematica的css文件修改与增加值/index.html#section2" title="可重复修改">
+	可重复修改</a></p>
+
+	</div>
+
+    <div class="container-twitter">
+      <div class="content-twitter">
+        <div class="row-twitter">
+          <div class="span14-twitter"><p class="Title">
+ 给Mathematica的css文件修改与增加值。
+</p>
+
+
+
+<p class="Subtitle">
+ @2013-05-01
+</p>
+
+
+
+<p class="Text">
+ <span><a shape="rect" href="http://mathematica.stackexchange.com/q/39144/6648"><span class="HyperlinkInline">se</span></a></span>上提问了。
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[1]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>ImportTxt[file_, Elements_: "String"] := 
+ Module[{file1 = file, absoluteFileName, 
+   fileNameTxt}, (fileNameTxt = ((FileNameDrop[
+           absoluteFileName = AbsoluteFileName[#]] <> "\\" <> 
+          FileBaseName[#]) &@file) <> ".txt"); 
+  If[FileExistsQ[fileNameTxt], DeleteFile[fileNameTxt]; 
+   CopyFile[file, fileNameTxt]; Import[fileNameTxt, Elements], 
+   CopyFile[file, fileNameTxt]; Import[fileNameTxt, Elements]]]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/给Mathematica的css文件修改与增加值/HTMLFiles/给Mathematica的css文件修改与增加值_1.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/给Mathematica的css文件修改与增加值/HTMLFiles/给Mathematica的css文件修改与增加值_1.png" alt="给Mathematica的css文件修改与增加值_1.png" width="689" height="177" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[2]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>ExportCSS[file_, content_] := 
+ Module[{fileTxt = file <> ".txt", fileCss = file <> ".css"}, 
+  Export[fileTxt, content]; 
+  If[FileExistsQ[fileCss], DeleteFile[fileCss]; 
+   RenameFile[fileTxt, fileCss], RenameFile[fileTxt, fileCss]]]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/给Mathematica的css文件修改与增加值/HTMLFiles/给Mathematica的css文件修改与增加值_2.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/给Mathematica的css文件修改与增加值/HTMLFiles/给Mathematica的css文件修改与增加值_2.png" alt="给Mathematica的css文件修改与增加值_2.png" width="655" height="77" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Section" id="section1">
+ 版本1 只能修改一次
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[3]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>cssAddOnce[cssFile_, name_, value_] := 
+ Module[{cssFileTxt}, 
+  If[FileExistsQ[cssFile] == False, Print["File-Not-Exists"]; 
+   Abort[]]; cssData = ImportTxt[cssFile, "Data"]; 
+  cssDataList = 
+   Partition[SplitBy[cssData, StringMatchQ[#, "/*" ~~ __ ~~ "*/"] &], 
+    2]; pos = Position[cssDataList, "." <> name <> " {"][[1]]; 
+  result = Insert[cssDataList, value, pos + {0, 0, 1}]; 
+  ExportCSS[cssFile // StringDrop[#, -4] &, 
+   StringJoin@Map[Riffle[#, "\n"] &, result, {1, 2}]]]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/给Mathematica的css文件修改与增加值/HTMLFiles/给Mathematica的css文件修改与增加值_3.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/给Mathematica的css文件修改与增加值/HTMLFiles/给Mathematica的css文件修改与增加值_3.png" alt="给Mathematica的css文件修改与增加值_3.png" width="654" height="177" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+<p class="Section" id="section2">
+ 可重复修改
+</p>
+
+
+
+<div>
+<input type="text" class="flip-button" style="width:50px;" value="In[4]:="/>
+<div id="1" style="display:none;">
+ {% raw %}<pre class="prettyprint lang-mma" style="padding-left:50px; background-color:LightPink;">
+<code>cssAddRepeated[cssFile_, name_, value_] := 
+ Module[{cssFileTxt}, 
+  If[FileExistsQ[cssFile] == False, Print["文件不存在"]; Abort[]]; 
+  cssData = ImportTxt[cssFile, "Data"]; 
+  cssDataList = 
+   Partition[SplitBy[cssData, StringMatchQ[#, "/*" ~~ __ ~~ "*/"] &], 
+    2];
+  pos1 = Position[cssDataList, "." <> name <> " {"][[1]];
+  level = pos1[[1 ;; 2]];
+  pos2 = Select[
+     Position[cssDataList, "}"][[All, -1]], # > pos1[[-1]] &] // First;
+  result = Insert[cssDataList, value, Append[level, pos2]];
+  ExportCSS[cssFile // StringDrop[#, -4] &, 
+   StringJoin@Map[Riffle[#, "\n"] &, result, {1, 2}]]]</code>
+</pre>{% endraw %}
+</div>
+<br clear="none"/>
+<p class="Input">
+<a class="imgEnlarge" href="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/给Mathematica的css文件修改与增加值/HTMLFiles/给Mathematica的css文件修改与增加值_4.png" data-lightbox="roadtrip"><img src="http://7xl9ih.com1.z0.glb.clouddn.com/HTMLFiles/给Mathematica的css文件修改与增加值/HTMLFiles/给Mathematica的css文件修改与增加值_4.png" alt="给Mathematica的css文件修改与增加值_4.png" width="658" height="224" style="vertical-align:middle"/></a>
+</p>
+</div>
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a shape="rect" href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div></div>
+        </div>
+       
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+	<a class="jiathis_like_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="给Mathematica的css文件修改与增加值" data-title="给Mathematica的css文件修改与增加值" data-url="hypergroups.cn/给Mathematica的css文件修改与增加值/index.html"></div>
+	<!-- 多说评论框 end -->
+
+	</div>
+	<footer>
+
+		
+	<!-- Mathematica代码高亮插件 starting -->
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify-mma.css" />
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="/1Plugins/google-code-prettify/distrib/google-code-prettify/lang-mma.js"></script>
+		<!-- Mathematica代码高亮插件 end -->
+		
+		
+      </footer>
+    </div>
+  </body>
+
+</html>
