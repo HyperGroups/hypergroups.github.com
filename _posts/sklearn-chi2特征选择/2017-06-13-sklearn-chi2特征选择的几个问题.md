@@ -1,7 +1,7 @@
 ---
 layout: post
-category:Computer
-title:sklearn-chi2特征选择
+category: Computer
+title: sklearn-chi2特征选择
 ---
 
 sklearn-chi2特征选择的一个问题是数据量大,特征空间太大时,有些稀疏的特征出现次数为1次时会有问题,除数为0
