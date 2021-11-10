@@ -1,0 +1,52 @@
+I"V<p>模型的Ensemble这里主要指是Model层面的,比如GBDT或RandomForest本身就是一些小模型[决策树]的的混合.
+比如两个LR模型的Ensemble,两个模型分为score1和score2,那么求个[加权]平均分,如果某个模型置信度更高,可以调高系数,合并后的auc通常会偏向高权重的.</p>
+
+<p>score_mean是不是肯定价于score1和score2之间?不一定,当有一个模型没有什么进步或差异时,通常大量尝试都不能在score_mean上获得提升,比如进行过初级特征或样本采样重训练的模型等.经过一些实践, lr和fm的模型加权,当两模型的auc差别不大时,加权平均后的auc通常会提高0.01个点. lr+gbdt的融合有时也有非常好的效果.
+而当两个模型的auc差别较大时,效果就并不好, 比如一个0.84而一个0.74,则很难超过0.84,因此如果有个模型的auc不高时,不是很有必要去计算一下ensemble</p>
+
+<p>显然融合的效果受两个模型的预测分数的分布的影响, 比如lr的分布跟fm的分数分布通常会不一样, lr的分数分布通常有两三种情况,一种是正态分布,通常是样本没有加权训练的,二种是右偏分分布,正样本加权训练,受权重影响较大,三种是较均匀的分布,fm实验较多的没有样本权重,大部分偏向于均匀分布,四种是头尾偏重的分布.</p>
+
+<p>有的模型会有一些小问题,比如在推荐场景中,冷门的出不来,热门的几个分数太高等,而用另一个模型去中和一下,在一些样本上就有更合理的效果.</p>
+
+<p>一些预测分数的分布</p>
+
+<p>前些时间试验CNN, Mathematica之前的版本V10主要是Classify函数,此函数在图像分类上相对比较弱智,对于数据不是那么干净的样本实际问题上,基本上不太可以实用,比如图像分类,实际中可能没有好的样本.因为V11强化了深度神经网络,同时我搞了一台GTX1080的台式机,因此开始玩了一下,即使最简单的手写数字识别的网络中,在图像分类中的效果也不错,但是也有很大问题,错分的情况多,而两个模型混合,在高阈值下,图像两分类的效果非常好!可以有一定的实用价值了,后续等YOLO, FasterRCNN, FCN等部署后在目标检测图像分类的综合实用上就更可行了,不过目前得等玩家自己实现一些,或坐等V12, 比较方便一点的是通用的物体识别与检测,可以借现有的模型权重数据.</p>
+
+<p>两个LR模型的版本融合还有另一种方式, 就是获得两个模型的参数之后,对参数求取平均,小问题是两个模型的bias可能差别较大. 这种方式我也有一次对照试验过, 总体性态并没有什么不同, 即每个分数的差别在于logistic(x)和(logistic(x1)+logistic(x2))/2, 实际上这种融合在分布式版本计算时是这么做的.</p>
+
+<p>SampleCode1:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>assoFeatureCase是某一个样本,assoWeights是&lt;特征ID,权重&gt;的association
+assoWeights=GroupBy[d1,First-&gt;Last,Last];
+logit_predict:=LogisticSigmoid[scoreRaw=Total@Merge[{KeyTake[assoFeatureCase,Keys@assoWeights],KeyTake[assoWeights,Keys@assoFeatureCase]},Times@@#&amp;]+bias]
+d1=Import["weight.txt002","CSV"];
+d1={#[[1]],#[[2]]}&amp;/@d;
+d2={#[[1]],#[[3]]}&amp;/@d;
+d3={#[[1]],((#[[2]]+#[[3]])/2)}&amp;/@d;
+{calcAUC[d1], calcAUC[d2],calcAUC[d3]}
+</code></pre></div></div>
+
+<p>Mathematica非常适合类似这种,输入一个文件,写几行代码,然后生成一个图或一个结果的小脚本.
+缺点是包太大了,产线或测试机装一下麻烦,并且Linux命令使用时也没有前端界面,改成命令行脚本又丢失了编辑的灵活便捷性,还要考虑一些前端函数的命令行可用性等,而整个流程中,比如人工通过传输工具找到相应路径down一下数据麻烦.</p>
+
+<p>因此linux通常能grep/awk什么的看一下还是方便,同时如果写python的话,读个文件还要import一个包,还要注意vi编辑Tab空格,对齐,或open一下什么的效率并没有这么高,但是可以跟模型的程序自动化,有时随手写的Mathematica脚本没做好管理,和复用,其实经常重复写,有时也浪费时间[写太多了太零碎了临时找半天找不到…].</p>
+
+<p>所以理想的情况还是综合使用合适的工具,这里就不扯了.</p>
+
+<p>https://mathematica.stackexchange.com/questions/133282/classify-predict-ensemble-of-classifiers-predictors
+https://github.com/antononcube/MathematicaForPrediction/blob/master/ClassifierEnsembles.m</p>
+
+<p>其他的模型层面的融合比如可以尝试:
+一个模型的输出分数或特征给下一个模型,做boosting/stack等,gbdt+lr
+http://blog.csdn.net/hero_fantao/article/details/33431653</p>
+
+<p>因此分为几类,一类是横向融合,上面提到两个分数,实际上如果有n个模型,每个模型的参数是多少呢?上面的链接里的提到使用另一个回归模型去拟合这些参数.
+比如把错分的样本升权重训练, 层级训练再获得每个子模型的系数再加权的adaboost。即模型本身可以是无关的，也可以是级联相关的。
+还有一类是纵向的最终只使用一个模型，但是前面的模型也参与了生成最终的模型。</p>
+
+<h4 id="-小结">###### 小结:</h4>
+
+<p>本文小结了前期调过一段时间的模型分数融合的小经验,许多时候调半天觉得,两组分数的平均不会高于最高组的auc,实践证明还真有效果, 同时经过图像分类实验进一步觉得还真有效.
+本文展示了Mathematica的几行代码的实际小应用
+本文链接了Mathematica的更专业正式一点的Ensemle模型的写法</p>
+
+:ET
